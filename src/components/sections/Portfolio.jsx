@@ -9,7 +9,9 @@ import Em from "@/components/ui/Em";
 import { CREAM, INK, MUTE, TXT } from "@/lib/tokens";
 
 const HOME_COUNT = 6;
-const RAIL_PAD = "pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-12 lg:pr-12";
+/** Match section header inset; scroll-pl keeps snap from flushing the first card */
+const RAIL_PAD =
+  "pl-5 pr-5 scroll-pl-5 sm:pl-8 sm:pr-8 sm:scroll-pl-8 lg:pl-12 lg:pr-12 lg:scroll-pl-12";
 
 export default function Portfolio() {
   const items = portfolio.slice(0, HOME_COUNT);
@@ -60,12 +62,16 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Padded swipe rail — matches header inset on the left */}
+      {/* Swipe rail — spacers beat scroll-snap eating padding */}
       <div
         ref={scrollerRef}
-        className={`flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 lg:gap-6 [&::-webkit-scrollbar]:hidden ${RAIL_PAD}`}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 lg:gap-6 [&::-webkit-scrollbar]:hidden"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
+        <div
+          aria-hidden
+          className="w-5 shrink-0 sm:w-8 lg:w-12"
+        />
         {items.map((item, index) => (
           <motion.button
             key={`${item.title}-${item.student}`}
@@ -139,6 +145,10 @@ export default function Portfolio() {
             </div>
           </div>
         </a>
+        <div
+          aria-hidden
+          className="w-5 shrink-0 sm:w-8 lg:w-12"
+        />
       </div>
 
       <AnimatePresence>
