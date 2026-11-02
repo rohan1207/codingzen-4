@@ -1,0 +1,67 @@
+export const featuresUnique = [
+  {
+    id: "teaching",
+    tab: "Teaching quality",
+    blurb: "Strict faculty selection and in-house mentoring for higher standards.",
+    title: "Teaching Quality Skills",
+    body: "Strict selection of faculty, trained under our exclusive in-house mentoring system — so every session holds a higher standard.",
+    icon: "award",
+    points: [
+      "Strict faculty selection before day one",
+      "Exclusive in-house mentoring system",
+      "Higher classroom standards, every cohort",
+    ],
+  },
+  {
+    id: "curriculum",
+    tab: "Curriculum",
+    blurb: "Industry-linked paths for all ages, refreshed continuously.",
+    title: "Extensive, Structured Curriculum",
+    body: "Industry-linked curriculum for all ages — continuously iterated classroom content, led by experienced educators.",
+    icon: "layers",
+    points: [
+      "Industry-linked paths for every age band",
+      "Continuous iteration of classroom content",
+      "Led by educators with real teaching years",
+    ],
+  },
+  {
+    id: "pedigree",
+    tab: "Our pedigree",
+    blurb: "Alumni of IIT Mumbai, IIM-B & ICAI with decades in education.",
+    title: "Our Pedigree",
+    body: "Our highly qualified team are alumni of esteemed institutions such as IIT Mumbai, IIM-B & ICAI — with decades in education.",
+    icon: "graduation",
+    points: [
+      "Alumni of IIT Mumbai, IIM Bangalore & ICAI",
+      "Decades of experience in education",
+      "Craft you can verify — not weekend tutors",
+    ],
+  },
+  {
+    id: "service",
+    tab: "Smart service",
+    blurb: "Consultant oversight that strengthens academic success.",
+    title: "Smart Service System",
+    body: "Teacher–student sessions are supported by an educational consultant with oversight on strengthening academic success.",
+    icon: "headset",
+    points: [
+      "Consultant oversight on every journey",
+      "Progress watched beyond the classroom",
+      "Academic success protected early",
+    ],
+  },
+  {
+    id: "mentors",
+    tab: "Learning mentors",
+    blurb: "Mentors who code beside you — all practical, not speakers.",
+    title: "Learning Mentors — Not Just Speakers",
+    body: "Mentors instruct, code and ideate alongside you. Sessions focus on foundation building — all practical, no theory-first lectures.",
+    icon: "code",
+    points: [
+      "Mentors code and ideate beside students",
+      "Foundation building in every session",
+      "All practical — not slide-deck speakers",
+    ],
+  },
+];

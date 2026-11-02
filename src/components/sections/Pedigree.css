@@ -1,0 +1,53 @@
+.pedigree-track {
+  display: flex;
+  width: max-content;
+  animation: pedigree-ltr 42s linear infinite;
+  will-change: transform;
+}
+
+.pedigree-track:hover {
+  animation-play-state: paused;
+}
+
+.pedigree-fade {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+@keyframes pedigree-ltr {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pedigree-track {
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+
+  .pedigree-fade {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
