@@ -46,17 +46,17 @@ export default function Pedigree() {
   return (
     <section
       id="pedigree"
-      className="relative w-full scroll-mt-24 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 lg:px-12"
+      className="relative w-full scroll-mt-24 overflow-x-clip px-4 py-7 sm:px-6 sm:py-9 lg:px-12 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <h2
-        className="text-center font-display text-[clamp(1.55rem,4.5vw,3rem)] font-medium tracking-[-0.03em]"
+        className="text-center font-display text-[clamp(1.45rem,6vw,3rem)] font-medium tracking-[-0.03em]"
         style={{ color: INK }}
       >
         Brought to you by a <Em>team from</Em>
       </h2>
 
-      <ul className="mx-auto mt-10 grid max-w-[1180px] grid-cols-2 items-center justify-items-center gap-x-10 gap-y-10 sm:mt-12 sm:grid-cols-3 sm:gap-x-12 sm:gap-y-12 lg:mt-14 lg:grid-cols-5 lg:gap-x-14 lg:gap-y-0">
+      <ul className="mx-auto mt-6 grid max-w-[1180px] grid-cols-2 items-center justify-items-center gap-x-6 gap-y-6 sm:mt-8 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-8 lg:mt-9 lg:grid-cols-5 lg:gap-x-14 lg:gap-y-0">
         {pedigree.map((item) => (
           <li key={item.name} className="flex w-full items-center justify-center">
             <a
@@ -64,7 +64,7 @@ export default function Pedigree() {
               target="_blank"
               rel="noopener noreferrer"
               title={item.name}
-              className="flex h-24 w-full max-w-[200px] items-center justify-center transition hover:opacity-75 sm:h-28 sm:max-w-[220px] lg:h-[7.25rem] lg:max-w-[200px]"
+              className="flex h-16 w-full max-w-[160px] items-center justify-center transition hover:opacity-75 sm:h-28 sm:max-w-[220px] lg:h-[7.25rem] lg:max-w-[200px]"
             >
               <Image
                 src={item.src}
@@ -72,7 +72,7 @@ export default function Pedigree() {
                 width={item.w}
                 height={item.h}
                 unoptimized
-                className="h-full w-auto max-h-[7.25rem] max-w-full object-contain object-center"
+                className="h-full w-auto max-h-16 max-w-full object-contain object-center sm:max-h-[7.25rem]"
               />
             </a>
           </li>

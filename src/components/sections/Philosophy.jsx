@@ -35,10 +35,10 @@ export default function Philosophy() {
       className="relative w-full scroll-mt-28 overflow-x-clip"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="mx-auto w-full max-w-[1180px] px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-20">
+      <div className="mx-auto w-full max-w-[1180px] px-4 py-7 sm:px-8 sm:py-9 lg:px-12 lg:py-12">
         <div className="max-w-[52rem]">
           <motion.p
-            className="lab mb-5 sm:mb-6"
+            className="lab mb-3 sm:mb-4"
             initial={reduce ? false : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -48,7 +48,7 @@ export default function Philosophy() {
           </motion.p>
 
           <h2
-            className="font-display text-[clamp(1.65rem,5vw,3.15rem)] font-medium leading-[1.15] tracking-[-0.03em]"
+            className="font-display text-[clamp(1.5rem,7vw,3.15rem)] font-medium leading-[1.2] tracking-[-0.03em] break-words"
             style={{ color: INK }}
           >
             <RevealLine delay={0.08} reduce={reduce}>
@@ -68,7 +68,7 @@ export default function Philosophy() {
 
           <motion.a
             href="/about"
-            className="mt-7 inline-flex items-center gap-1.5 font-display text-[15px] font-medium text-ember transition hover:opacity-80"
+            className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 font-display text-[15px] font-medium text-ember transition hover:opacity-80"
             initial={reduce ? false : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}

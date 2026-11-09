@@ -35,15 +35,14 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative scroll-mt-28 overflow-hidden py-14 sm:py-16 lg:py-20"
+      className="relative scroll-mt-28 overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-12">
-        {/* Header row */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <h2
-              className="font-display text-[clamp(1.65rem,4.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em]"
+              className="font-display text-[clamp(1.55rem,6.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em]"
               style={{ color: INK }}
             >
               Two ways <Em>to learn.</Em>
@@ -57,9 +56,9 @@ export default function Pricing() {
             </p>
           </div>
 
-          <div className="flex flex-col items-start gap-3 sm:items-end">
+          <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:items-end">
             <div
-              className={`inline-flex rounded-full border border-black/8 bg-white/70 p-1 transition ${
+              className={`inline-flex w-full max-w-full flex-wrap rounded-full border border-black/8 bg-white/70 p-1 transition sm:w-auto ${
                 ready ? "opacity-100" : "opacity-70"
               }`}
               role="group"
@@ -68,7 +67,7 @@ export default function Pricing() {
               <button
                 type="button"
                 onClick={() => setRegion("in")}
-                className={`rounded-full px-3.5 py-1.5 font-display text-[12px] font-medium transition ${
+                className={`min-h-[40px] flex-1 rounded-full px-3.5 py-2 font-display text-[12px] font-medium transition sm:min-h-0 sm:flex-none sm:py-1.5 ${
                   showIndia
                     ? "bg-black text-white"
                     : "text-[#666] hover:text-ink"
@@ -79,7 +78,7 @@ export default function Pricing() {
               <button
                 type="button"
                 onClick={() => setRegion("intl")}
-                className={`rounded-full px-3.5 py-1.5 font-display text-[12px] font-medium transition ${
+                className={`min-h-[40px] flex-1 rounded-full px-3.5 py-2 font-display text-[12px] font-medium transition sm:min-h-0 sm:flex-none sm:py-1.5 ${
                   !showIndia
                     ? "bg-black text-white"
                     : "text-[#666] hover:text-ink"
@@ -89,12 +88,12 @@ export default function Pricing() {
               </button>
             </div>
 
-            <div>
+            <div className="w-full sm:w-auto">
               <p className="mb-2 font-display text-[11px] font-medium uppercase tracking-[0.16em] text-[#999]">
                 Choose a class pack
               </p>
               <div
-                className="inline-flex rounded-full border border-black/8 bg-[#efebe3] p-1"
+                className="flex w-full flex-wrap gap-1 rounded-2xl border border-black/8 bg-[#efebe3] p-1 sm:inline-flex sm:w-auto sm:flex-nowrap sm:rounded-full"
                 role="group"
                 aria-label="Class pack size"
               >
@@ -103,7 +102,7 @@ export default function Pricing() {
                     key={n}
                     type="button"
                     onClick={() => setPack(n)}
-                    className={`rounded-full px-4 py-2 font-display text-[13px] font-medium transition sm:px-5 ${
+                    className={`min-h-[44px] flex-1 rounded-xl px-3 py-2.5 font-display text-[13px] font-medium transition sm:min-h-0 sm:flex-none sm:rounded-full sm:px-5 sm:py-2 ${
                       pack === n
                         ? "bg-black text-white shadow-sm"
                         : "text-[#555] hover:text-ink"
@@ -117,8 +116,7 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="mt-8 grid gap-4 lg:mt-10 lg:grid-cols-2 lg:gap-5">
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:mt-7 lg:grid-cols-2 lg:gap-5">
           {cards.map(({ way, perClass, total, save }, i) => {
             const per = formatPlanPrice(perClass, showIndia);
             const tot = formatPlanPrice(total, showIndia);
@@ -132,15 +130,15 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className={`relative flex flex-col overflow-hidden rounded-[1.75rem] p-6 sm:p-7 lg:p-8 ${
+                className={`relative flex flex-col overflow-hidden rounded-[1.75rem] p-5 sm:p-7 lg:p-8 ${
                   dark
                     ? "bg-black text-white"
                     : "border border-black/6 bg-white text-ink"
                 }`}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[1.35rem] font-medium tracking-[-0.03em] sm:text-[1.5rem]">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-[1.25rem] font-medium tracking-[-0.03em] sm:text-[1.5rem]">
                       {way.name}
                     </h3>
                     <p
@@ -152,7 +150,7 @@ export default function Pricing() {
                     </p>
                   </div>
                   <span
-                    className={`shrink-0 rounded-full px-3 py-1 font-display text-[10px] font-medium uppercase tracking-[0.12em] ${
+                    className={`shrink-0 rounded-full px-3 py-1.5 font-display text-[10px] font-medium uppercase tracking-[0.12em] ${
                       dark
                         ? "bg-ember text-white"
                         : "bg-[#efebe3] text-[#555]"
@@ -162,8 +160,8 @@ export default function Pricing() {
                   </span>
                 </div>
 
-                <div className="mt-7 flex flex-wrap items-end justify-between gap-4">
-                  <p className="font-display text-[clamp(2.35rem,5vw,3.25rem)] font-medium leading-none tracking-[-0.045em]">
+                <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-4">
+                  <p className="font-display text-[clamp(2.1rem,9vw,3.25rem)] font-medium leading-none tracking-[-0.045em]">
                     {per.symbol}
                     {per.amount}
                     <span
@@ -174,7 +172,7 @@ export default function Pricing() {
                       / class
                     </span>
                   </p>
-                  <div className="text-right">
+                  <div className="sm:text-right">
                     <p
                       className={`font-display text-[15px] font-medium tabular-nums ${
                         dark ? "text-white/85" : "text-ink"
@@ -192,7 +190,7 @@ export default function Pricing() {
                   </div>
                 </div>
 
-                <ul className="mt-7 grid gap-x-4 gap-y-3 sm:grid-cols-2">
+                <ul className="mt-6 grid grid-cols-1 gap-x-4 gap-y-3 sm:mt-7 sm:grid-cols-2">
                   {way.features.map((feature) => {
                     const isCert = /certificate/i.test(feature);
                     return (
@@ -219,7 +217,7 @@ export default function Pricing() {
                             <Check size={11} strokeWidth={3} />
                           )}
                         </span>
-                        {feature}
+                        <span className="min-w-0">{feature}</span>
                       </li>
                     );
                   })}
@@ -227,7 +225,7 @@ export default function Pricing() {
 
                 <a
                   href="#trial"
-                  className={`mt-8 inline-flex w-full items-center justify-center rounded-2xl px-4 py-3.5 font-display text-sm font-medium transition ${
+                  className={`mt-7 inline-flex min-h-[48px] w-full items-center justify-center rounded-2xl px-4 py-3.5 font-display text-sm font-medium transition sm:mt-8 ${
                     dark
                       ? "bg-white text-ink hover:bg-[#f3f3f3]"
                       : "bg-black text-white hover:bg-[#2a2a2a]"
@@ -240,13 +238,12 @@ export default function Pricing() {
           })}
         </div>
 
-        {/* Certificate callout */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.45, delay: 0.12 }}
-          className="mt-5 flex flex-col items-start gap-3 rounded-[1.25rem] border border-black/6 bg-white/70 px-5 py-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-4 sm:px-6"
+          className="mt-5 flex flex-col items-start gap-3 rounded-[1.25rem] border border-black/6 bg-white/70 px-4 py-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-4 sm:px-6"
         >
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ember/10 text-ember">
             <Award size={18} strokeWidth={2.25} />

@@ -21,14 +21,14 @@ const programs = [
 
 const company = [
   { label: "About", href: "/about" },
-  { label: "Our Story", href: "/#our-story" },
+  { label: "Our Story", href: "/about" },
   { label: "Portfolios", href: "/#portfolio" },
   { label: "Testimonials", href: "/#stories" },
 ];
 
 const help = [
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "#" },
   { label: "Terms", href: "#" },
 ];
@@ -51,12 +51,12 @@ function FooterColumn({ title, links }) {
       <h3 className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-ink">
         {title}
       </h3>
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-3.5 space-y-2.5 sm:mt-4">
         {links.map((item) => (
           <li key={item.label}>
             <a
               href={item.href}
-              className="font-display text-[14px] font-medium tracking-[-0.02em] transition hover:text-ember"
+              className="inline-flex min-h-[36px] items-center font-display text-[14px] font-medium tracking-[-0.02em] transition hover:text-ember"
               style={{ color: MUTE }}
             >
               {item.label}
@@ -105,10 +105,9 @@ function BrandGlow() {
         my.set(0.45);
       }}
       style={{ y: rise, opacity: fade }}
-      className="relative h-[min(48vw,360px)] w-full overflow-hidden sm:h-[min(42vw,420px)] lg:h-[460px]"
+      className="relative h-[min(52vw,280px)] w-full overflow-hidden sm:h-[min(42vw,420px)] lg:h-[460px]"
       aria-hidden
     >
-      {/* Stepped mountain — short → peak → short */}
       <motion.div
         className="absolute inset-x-[-3%] bottom-[16%] top-[20%]"
         style={{ x: shiftX, y: shiftY }}
@@ -144,15 +143,13 @@ function BrandGlow() {
         />
       </motion.div>
 
-      {/* Wordmark — lifted so letters are not cropped */}
       <p
         className="pointer-events-none absolute inset-x-0 bottom-[1.25rem] z-[1] text-center font-display font-medium leading-none tracking-[-0.07em] text-white select-none sm:bottom-[1.75rem] lg:bottom-[2.25rem]"
-        style={{ fontSize: "clamp(3.5rem, 16vw, 11.5rem)" }}
+        style={{ fontSize: "clamp(2.75rem, 16vw, 11.5rem)" }}
       >
         codingzen
       </p>
 
-      {/* Cream fade into the mountain */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 z-[3] h-[40%]"
         style={{
@@ -173,10 +170,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden border-t border-black/5"
+      className="relative overflow-x-clip border-t border-black/5"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="mx-auto w-full max-w-6xl px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
+      <div className="mx-auto w-full max-w-6xl px-4 pt-8 sm:px-6 sm:pt-12 lg:px-8 lg:pt-14">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div className="max-w-md">
             <Logo />
@@ -195,7 +192,7 @@ export default function Footer() {
             ) : (
               <form
                 onSubmit={onJoin}
-                className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center"
+                className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-2"
               >
                 <label htmlFor="footer-email" className="sr-only">
                   Parent&apos;s email for updates
@@ -206,12 +203,12 @@ export default function Footer() {
                   type="email"
                   required
                   placeholder="Parent's email for updates"
-                  className="w-full flex-1 rounded-full border bg-white px-5 py-3 font-display text-[14px] text-ink outline-none placeholder:text-mute focus:border-ember/40 focus:ring-2 focus:ring-ember/15"
+                  className="min-h-[48px] w-full flex-1 rounded-full border bg-white px-5 py-3 font-display text-[14px] text-ink outline-none placeholder:text-mute focus:border-ember/40 focus:ring-2 focus:ring-ember/15"
                   style={{ borderColor: LINE }}
                 />
                 <button
                   type="submit"
-                  className="shrink-0 rounded-full px-6 py-3 font-display text-[14px] font-medium text-white transition hover:brightness-110"
+                  className="inline-flex min-h-[48px] w-full shrink-0 items-center justify-center rounded-full px-6 py-3 font-display text-[14px] font-medium text-white transition hover:brightness-110 sm:w-auto"
                   style={{ backgroundColor: INK }}
                 >
                   Join
@@ -220,15 +217,18 @@ export default function Footer() {
             )}
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+          {/* Phone: 2-col link grid; sm: 2; lg: 3 */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
             <FooterColumn title="Programs" links={programs} />
             <FooterColumn title="Company" links={company} />
-            <FooterColumn title="Help" links={help} />
+            <div className="col-span-2 sm:col-span-1 lg:col-span-1">
+              <FooterColumn title="Help" links={help} />
+            </div>
           </div>
         </div>
 
         <div
-          className="mt-12 flex flex-col items-center gap-3 border-t border-black/8 py-5 font-mono text-[10px] font-medium uppercase tracking-[0.16em] sm:mt-16 sm:flex-row sm:justify-between sm:pb-6 sm:pt-5 sm:text-[11px]"
+          className="mt-8 flex flex-col items-center gap-3 border-t border-black/8 py-4 text-center font-mono text-[10px] font-medium uppercase tracking-[0.16em] sm:mt-10 sm:flex-row sm:justify-between sm:pb-5 sm:pt-4 sm:text-left sm:text-[11px]"
           style={{ color: MUTE }}
         >
           <span>© {new Date().getFullYear()} CODINGZEN</span>
@@ -243,8 +243,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Generous cream space, then end animation */}
-      <div className="h-6 sm:h-10 lg:h-14" />
+      <div className="h-4 sm:h-6 lg:h-8" />
       <BrandGlow />
     </footer>
   );

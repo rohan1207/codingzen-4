@@ -8,12 +8,12 @@ export default function PlaySection() {
   return (
     <section
       id="play"
-      className="relative flex min-h-0 scroll-mt-28 flex-col overflow-hidden py-8 sm:py-10 md:min-h-[100svh]"
+      className="relative flex min-h-0 scroll-mt-28 flex-col overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-35"
+        className="pointer-events-none absolute inset-0 hidden opacity-35 sm:block"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px)",
@@ -24,10 +24,10 @@ export default function PlaySection() {
       />
 
       <div className="relative z-[1] mx-auto flex min-h-0 w-full flex-1 flex-col px-4 sm:px-6 lg:px-12">
-        <div className="mb-4 flex shrink-0 flex-wrap items-end justify-between gap-3 sm:mb-5">
+        <div className="mb-3 flex shrink-0 flex-col gap-2 sm:mb-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <p className="lab">Interactive</p>
-            <h2 className="mt-1.5 font-display text-[clamp(1.45rem,4vw,2.5rem)] font-medium tracking-[-0.03em] text-ink">
+            <h2 className="mt-1.5 font-display text-[clamp(1.45rem,7vw,2.5rem)] font-medium tracking-[-0.03em] text-ink">
               Code is meant to be <Em>played</Em> with
             </h2>
             <p className="mt-1.5 max-w-lg text-[14px] leading-relaxed text-txt sm:text-[15px]">
@@ -35,11 +35,11 @@ export default function PlaySection() {
               something new every try.
             </p>
           </div>
-          <p className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-[#aaa]">
+          <p className="hidden font-display text-[11px] font-medium uppercase tracking-[0.18em] text-[#aaa] sm:block">
             kids play · parents smile
           </p>
         </div>
-        <div className="min-h-0 flex-1">
+        <div className="min-h-0 w-full flex-1">
           <CodingQuiz />
         </div>
       </div>

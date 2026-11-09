@@ -150,12 +150,12 @@ export default function StackGallery() {
   return (
     <section
       id="stack"
-      className="relative scroll-mt-28 overflow-x-clip overflow-y-visible py-12 sm:py-16 lg:py-24"
+      className="relative scroll-mt-28 overflow-x-clip overflow-y-visible py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: BG }}
     >
       <div className="relative z-[1] mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-12">
-        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:gap-5 lg:mb-12 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <h2 className="max-w-[16ch] font-display text-[clamp(1.75rem,5vw,3.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink">
+        <div className="mb-5 flex flex-col gap-3 sm:mb-7 sm:gap-4 lg:mb-8 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+          <h2 className="max-w-[16ch] font-display text-[clamp(1.5rem,7vw,3.6rem)] font-medium leading-[1.12] tracking-[-0.03em] text-ink">
             <span className="block">Four tracks.</span>
             <span className="block">
               <Em>One direction:</Em> <span>forward.</span>
@@ -170,7 +170,7 @@ export default function StackGallery() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 sm:hidden">
+        <div className="flex flex-col gap-4 sm:hidden">
           {tracks.map((track) => (
             <MobileCard key={track.id} track={track} />
           ))}
@@ -178,7 +178,7 @@ export default function StackGallery() {
 
         <div
           ref={rootRef}
-          className="hidden h-[520px] gap-3 sm:flex lg:h-[540px] lg:gap-3.5"
+          className="hidden h-[440px] gap-3 sm:flex lg:h-[480px] lg:gap-3.5"
           onMouseLeave={() => setActive(2)}
         >
           {tracks.map((track, i) => {
@@ -295,7 +295,7 @@ export default function StackGallery() {
         </div>
 
         {/* Also teaching — outline pills */}
-        <div className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5 lg:mt-14">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 lg:mt-9">
           <p className="shrink-0 font-display text-[13px] font-medium tracking-[-0.01em] text-mute sm:text-[14px]">
             Also teaching
           </p>
@@ -304,7 +304,7 @@ export default function StackGallery() {
               <a
                 key={label}
                 href="#programs"
-                className="inline-flex items-center rounded-full border border-line bg-white px-3.5 py-2 font-display text-[12px] font-medium tracking-[-0.01em] text-txt transition hover:border-black/25 hover:text-ink sm:px-4 sm:text-[13px]"
+                className="inline-flex min-h-[40px] items-center rounded-full border border-line bg-white px-3.5 py-2 font-display text-[12px] font-medium tracking-[-0.01em] text-txt transition hover:border-black/25 hover:text-ink sm:min-h-0 sm:px-4 sm:text-[13px]"
               >
                 {label}
               </a>
@@ -319,7 +319,7 @@ export default function StackGallery() {
 function MobileCard({ track }) {
   return (
     <article
-      className="flex flex-col rounded-[1.5rem] border bg-white p-5"
+      className="flex flex-col rounded-[1.35rem] border bg-white p-4 sm:rounded-[1.5rem] sm:p-5"
       style={{
         borderColor: LINE,
         boxShadow: `0 18px 40px -24px ${track.glow}`,
@@ -334,7 +334,7 @@ function MobileCard({ track }) {
         </span>
       </div>
 
-      <div className="relative mx-auto mt-6 mb-5 h-[140px] w-full max-w-[180px]">
+      <div className="relative mx-auto mt-5 mb-4 h-[120px] w-full max-w-[160px] sm:mt-6 sm:mb-5 sm:h-[140px] sm:max-w-[180px]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-[6%] rounded-full blur-2xl"
@@ -348,20 +348,20 @@ function MobileCard({ track }) {
           width={200}
           height={200}
           unoptimized
-          className="relative z-[1] h-full w-full object-contain"
+          className="relative z-[1] h-full w-full max-w-full object-contain"
         />
       </div>
 
-      <h3 className="text-center font-display text-[1.65rem] font-medium tracking-[-0.035em] text-ink">
+      <h3 className="text-center font-display text-[clamp(1.35rem,6vw,1.65rem)] font-medium tracking-[-0.035em] text-ink">
         {track.title}
       </h3>
-      <p className="mt-1.5 text-center font-display text-[14px] font-medium text-mute">
+      <p className="mt-1.5 text-center font-display text-[13px] font-medium text-mute sm:text-[14px]">
         {track.tagline}
       </p>
-      <p className="mt-4 text-[14px] leading-relaxed text-txt">
+      <p className="mt-3 text-[13px] leading-relaxed text-txt sm:mt-4 sm:text-[14px]">
         {track.body}
       </p>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap gap-2 sm:mt-4">
         {track.chips.map((chip) => (
           <span
             key={chip}

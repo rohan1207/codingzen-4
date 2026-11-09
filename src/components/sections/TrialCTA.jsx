@@ -26,7 +26,7 @@ const INTERESTS = [
 const fieldLabel =
   "font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-mute";
 const fieldInput =
-  "mt-2 w-full rounded-2xl border border-line bg-white px-4 py-3.5 font-display text-[15px] text-ink outline-none transition placeholder:text-mute focus:border-ember/45 focus:ring-2 focus:ring-ember/15";
+  "mt-2 min-h-[48px] w-full rounded-2xl border border-line bg-white px-4 py-3.5 font-display text-[15px] text-ink outline-none transition placeholder:text-mute focus:border-ember/45 focus:ring-2 focus:ring-ember/15";
 
 export default function TrialCTA() {
   const [submitted, setSubmitted] = useState(false);
@@ -40,24 +40,23 @@ export default function TrialCTA() {
   return (
     <section
       id="trial"
-      className="relative scroll-mt-28 overflow-hidden py-10 sm:py-12 lg:py-14"
+      className="relative scroll-mt-28 overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-12">
         <div
           id="contact"
-          className="relative overflow-hidden rounded-[1.75rem] border bg-white sm:rounded-[2rem]"
+          className="relative overflow-hidden rounded-[1.5rem] border bg-white sm:rounded-[2rem]"
           style={{ borderColor: LINE }}
         >
-          <div className="relative grid lg:grid-cols-[0.92fr_1.08fr]">
-            {/* Left — value prop */}
-            <div className="flex flex-col justify-between gap-10 px-6 py-8 text-ink sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+          <div className="relative grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="flex flex-col justify-between gap-6 px-5 py-6 text-ink sm:gap-8 sm:px-8 sm:py-8 lg:px-9 lg:py-9">
               <div>
-                <h2 className="font-display text-[clamp(1.75rem,5vw,3.35rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink">
+                <h2 className="font-display text-[clamp(1.55rem,6.5vw,3.35rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink">
                   See it for <Em>yourself.</Em>
                 </h2>
 
-                <ul className="mt-8 space-y-3.5 sm:mt-10">
+                <ul className="mt-6 space-y-3.5 sm:mt-10">
                   {PERKS.map((perk) => (
                     <li
                       key={perk}
@@ -73,7 +72,7 @@ export default function TrialCTA() {
                           style={{ color: RED }}
                         />
                       </span>
-                      {perk}
+                      <span className="min-w-0">{perk}</span>
                     </li>
                   ))}
                 </ul>
@@ -105,14 +104,13 @@ export default function TrialCTA() {
               </figure>
             </div>
 
-            {/* Right — form */}
-            <div className="p-3 sm:p-4 lg:p-5">
+            <div className="border-t border-line p-3 sm:border-t-0 sm:p-4 lg:p-5">
               <div
-                className="h-full rounded-[1.35rem] border p-5 sm:rounded-[1.5rem] sm:p-7 lg:p-8"
+                className="h-full rounded-[1.25rem] border p-4 sm:rounded-[1.5rem] sm:p-7 lg:p-8"
                 style={{ backgroundColor: CREAM, borderColor: LINE }}
               >
                 {submitted ? (
-                  <div className="flex h-full min-h-[280px] flex-col items-center justify-center py-10 text-center">
+                  <div className="flex h-full min-h-[180px] flex-col items-center justify-center py-8 text-center sm:min-h-[220px]">
                     <p className="font-display text-2xl font-medium tracking-[-0.03em] text-ink">
                       You&apos;re booked in
                     </p>
@@ -123,8 +121,8 @@ export default function TrialCTA() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} className="flex h-full flex-col">
-                    <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-                      <div>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+                      <div className="min-w-0">
                         <label htmlFor="parent-name" className={fieldLabel}>
                           Parent&apos;s name
                         </label>
@@ -137,7 +135,7 @@ export default function TrialCTA() {
                           placeholder="Anjali Mehra"
                         />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <label htmlFor="whatsapp" className={fieldLabel}>
                           WhatsApp number
                         </label>
@@ -204,7 +202,7 @@ export default function TrialCTA() {
 
                     <button
                       type="submit"
-                      className="mt-6 inline-flex w-full items-center justify-between gap-3 rounded-full px-5 py-3.5 font-display text-[15px] font-medium text-white transition hover:brightness-110 sm:mt-8 sm:py-4"
+                      className="mt-6 inline-flex min-h-[52px] w-full items-center justify-between gap-3 rounded-full px-5 py-3.5 font-display text-[15px] font-medium text-white transition hover:brightness-110 sm:mt-8 sm:py-4"
                       style={{ backgroundColor: INK }}
                     >
                       Book a free class

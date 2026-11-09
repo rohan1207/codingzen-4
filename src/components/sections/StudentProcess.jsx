@@ -46,7 +46,7 @@ export default function StudentProcess() {
     <section
       id="parents"
       ref={rootRef}
-      className="relative scroll-mt-28 overflow-hidden text-ink"
+      className="relative scroll-mt-28 overflow-x-clip text-ink"
       style={{ backgroundColor: CREAM }}
       aria-label="CodingZen journey"
     >
@@ -60,7 +60,7 @@ export default function StudentProcess() {
         }}
       />
 
-      <div className="relative mx-auto w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-20">
+      <div className="relative mx-auto w-full px-4 py-7 sm:px-6 sm:py-9 lg:px-12 lg:py-12">
         {/* Inspiring quote */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -72,7 +72,7 @@ export default function StudentProcess() {
             Why we build
           </p>
           <blockquote className="mt-5 sm:mt-6">
-            <p className="font-display text-[clamp(1.65rem,4.2vw,3.15rem)] font-medium leading-[1.22] tracking-[-0.03em] text-ink">
+            <p className="font-display text-[clamp(1.45rem,6.5vw,3.15rem)] font-medium leading-[1.25] tracking-[-0.03em] text-ink break-words">
               &ldquo;We don&apos;t raise kids who memorize code — we raise kids who{" "}
               <Em>build</Em> what they imagine.&rdquo;
             </p>
@@ -83,13 +83,13 @@ export default function StudentProcess() {
         </motion.div>
 
         {/* Progress highlights */}
-        <div className="relative mx-auto mt-14 max-w-6xl sm:mt-16 lg:mt-20">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-3 sm:mb-10">
-            <div>
+        <div className="relative mx-auto mt-8 max-w-6xl sm:mt-10 lg:mt-12">
+          <div className="mb-5 flex flex-col gap-2 sm:mb-7 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+            <div className="min-w-0">
               <p className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-mute">
                 Over the years
               </p>
-              <h2 className="mt-2 font-display text-[clamp(1.55rem,3vw,2.35rem)] font-medium tracking-[-0.03em] text-ink">
+              <h2 className="mt-2 font-display text-[clamp(1.45rem,6vw,2.35rem)] font-medium tracking-[-0.03em] text-ink">
                 Progress, not <Em>pause</Em>
               </h2>
             </div>
@@ -169,7 +169,7 @@ export default function StudentProcess() {
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-ember" />
                 </span>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-ember">
                     {m.year}
                   </p>

@@ -11,7 +11,8 @@ import { CREAM, INK, MUTE, TXT } from "@/lib/tokens";
 const HOME_COUNT = 6;
 /** Match section header inset; scroll-pl keeps snap from flushing the first card */
 const RAIL_PAD =
-  "pl-5 pr-5 scroll-pl-5 sm:pl-8 sm:pr-8 sm:scroll-pl-8 lg:pl-12 lg:pr-12 lg:scroll-pl-12";
+  "pl-5 pr-5 sm:pl-8 sm:pr-8 lg:pl-12 lg:pr-12";
+const RAIL_SPACER = "w-6 shrink-0 sm:w-10 lg:w-14";
 
 export default function Portfolio() {
   const items = portfolio.slice(0, HOME_COUNT);
@@ -35,13 +36,13 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="relative scroll-mt-28 overflow-hidden py-10 sm:py-14 lg:py-20"
+      className="relative scroll-mt-28 overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className={`relative mx-auto w-full ${RAIL_PAD}`}>
-        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+        <div className="mb-5 flex flex-col gap-3 sm:mb-7 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
           <h2
-            className="max-w-2xl font-display text-[clamp(1.65rem,4.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em]"
+            className="max-w-2xl font-display text-[clamp(1.55rem,6.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em]"
             style={{ color: INK }}
           >
             Real projects. <Em>Real users.</Em>
@@ -51,7 +52,7 @@ export default function Portfolio() {
             href={portfoliosPageUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border bg-transparent px-4 py-2.5 font-display text-[13px] font-medium tracking-[-0.02em] transition hover:bg-black hover:text-white sm:w-auto"
+            className="inline-flex min-h-[44px] w-full items-center justify-center gap-2.5 rounded-full border bg-transparent px-4 py-2.5 font-display text-[13px] font-medium tracking-[-0.02em] transition hover:bg-black hover:text-white sm:w-auto"
             style={{ color: INK, borderColor: "rgba(0,0,0,0.9)" }}
           >
             All student portfolios
@@ -62,16 +63,13 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Swipe rail — spacers beat scroll-snap eating padding */}
+      {/* Swipe rail — left spacer preserved */}
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 lg:gap-6 [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-3.5 overflow-x-auto scroll-pl-6 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 sm:scroll-pl-10 lg:gap-6 lg:scroll-pl-14 [&::-webkit-scrollbar]:hidden"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
-        <div
-          aria-hidden
-          className="w-5 shrink-0 sm:w-8 lg:w-12"
-        />
+        <div aria-hidden className={RAIL_SPACER} />
         {items.map((item, index) => (
           <motion.button
             key={`${item.title}-${item.student}`}
@@ -81,36 +79,34 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="group flex w-[min(72vw,260px)] shrink-0 snap-start flex-col text-left outline-none transition focus-visible:ring-2 focus-visible:ring-ember/40 sm:w-[min(46vw,280px)] lg:w-[min(26vw,300px)]"
+            className="group flex w-[min(78vw,300px)] shrink-0 snap-start flex-col text-left outline-none transition focus-visible:ring-2 focus-visible:ring-ember/40 sm:w-[min(46vw,280px)] lg:w-[min(26vw,300px)]"
             aria-label={`${item.title} by ${item.student}`}
           >
-            {/* Colored media panel */}
             <div
-              className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] p-4 sm:rounded-[1.85rem] sm:p-[1.125rem]"
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] p-3.5 sm:rounded-[1.85rem] sm:p-[1.125rem]"
               style={{ backgroundColor: item.tint || "#DBC4A5" }}
             >
               <span className="relative z-[2] inline-flex rounded-full bg-white px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-ink shadow-sm">
                 {item.tag}
               </span>
-              <div className="absolute inset-3 top-12 overflow-hidden rounded-[1.25rem] sm:inset-4 sm:top-14 sm:rounded-[1.35rem]">
+              <div className="absolute inset-3 top-12 overflow-hidden rounded-[1.15rem] sm:inset-4 sm:top-14 sm:rounded-[1.35rem]">
                 <Image
                   src={item.thumb}
                   alt=""
                   fill
                   unoptimized
-                  sizes="300px"
+                  sizes="(max-width: 640px) 78vw, 300px"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
               </div>
             </div>
 
-            {/* Caption — part of the same clickable card */}
-            <div className="mt-3.5 px-0.5 sm:mt-4">
-              <h3 className="font-display text-[1.05rem] font-medium tracking-[-0.02em] text-ink sm:text-[1.15rem]">
+            <div className="mt-3.5 min-w-0 px-0.5 sm:mt-4">
+              <h3 className="font-display text-[1.05rem] font-medium leading-snug tracking-[-0.02em] text-ink sm:text-[1.15rem]">
                 {item.title}
               </h3>
               <p
-                className="mt-1 text-[12px] font-medium uppercase tracking-[0.06em]"
+                className="mt-1 text-[11px] font-medium uppercase tracking-[0.06em] sm:text-[12px]"
                 style={{ color: MUTE }}
               >
                 {item.student} · Age {item.age}
@@ -129,9 +125,9 @@ export default function Portfolio() {
           href={portfoliosPageUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-[min(56vw,220px)] shrink-0 snap-start flex-col sm:w-[200px]"
+          className="flex w-[min(68vw,220px)] shrink-0 snap-start flex-col sm:w-[200px]"
         >
-          <div className="flex aspect-[4/5] flex-col items-start justify-between rounded-[1.75rem] border border-dashed border-black/20 bg-white/60 p-5 transition hover:border-ember/40 hover:bg-white sm:rounded-[1.85rem]">
+          <div className="flex aspect-[4/5] flex-col items-start justify-between rounded-[1.5rem] border border-dashed border-black/20 bg-white/60 p-5 transition hover:border-ember/40 hover:bg-white sm:rounded-[1.85rem]">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-ember text-white">
               <ArrowUpRight size={16} strokeWidth={2.5} />
             </span>
@@ -145,16 +141,13 @@ export default function Portfolio() {
             </div>
           </div>
         </a>
-        <div
-          aria-hidden
-          className="w-5 shrink-0 sm:w-8 lg:w-12"
-        />
+        <div aria-hidden className={RAIL_SPACER} />
       </div>
 
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[80] flex items-end justify-center p-4 sm:items-center sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -191,7 +184,7 @@ export default function Portfolio() {
                       href={active.mediaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white transition hover:bg-white/15"
+                      className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white transition hover:bg-white/15"
                     >
                       Open site
                       <ExternalLink size={12} />
@@ -201,7 +194,7 @@ export default function Portfolio() {
                     type="button"
                     onClick={() => setActive(null)}
                     aria-label="Close popup"
-                    className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white transition hover:bg-ember"
+                    className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-ember sm:h-9 sm:w-9"
                   >
                     <X size={18} strokeWidth={2.25} />
                   </button>
@@ -211,7 +204,7 @@ export default function Portfolio() {
               <div
                 className={`relative w-full bg-black ${
                   active.mediaType === "site"
-                    ? "h-[min(72vh,640px)]"
+                    ? "h-[min(62vh,640px)] sm:h-[min(72vh,640px)]"
                     : "aspect-video"
                 }`}
               >

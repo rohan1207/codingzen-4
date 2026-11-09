@@ -14,25 +14,25 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="relative scroll-mt-24 overflow-hidden py-12 text-ink sm:py-14 lg:py-16"
+      className="relative scroll-mt-24 overflow-x-clip py-7 text-ink sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-12">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-3 sm:mb-10">
-          <div>
+        <div className="mb-5 flex flex-col gap-2 sm:mb-7 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+          <div className="min-w-0">
             <p className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-mute">
               By the numbers
             </p>
-            <h2 className="mt-2 font-display text-[clamp(1.85rem,3.8vw,3rem)] font-medium tracking-[-0.03em] text-ink">
+            <h2 className="mt-2 font-display text-[clamp(1.5rem,7vw,3rem)] font-medium tracking-[-0.03em] text-ink">
               Proof in the <Em>progress</Em>
             </h2>
           </div>
-          <p className="max-w-sm text-sm text-mute">
+          <p className="max-w-sm text-sm leading-relaxed text-mute">
             Live mentoring metrics families actually care about.
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:gap-10">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-5 xl:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -55,7 +55,7 @@ export default function Stats() {
                     delay: 0.08 + i * 0.12,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="font-display text-[clamp(2.75rem,6vw,4.25rem)] font-medium leading-none tracking-[-0.04em] text-ink"
+                  className="font-display text-[clamp(2.5rem,12vw,4.25rem)] font-medium leading-none tracking-[-0.04em] text-ink"
                 >
                   {inView ? (
                     <CountUp

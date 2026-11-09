@@ -1,15 +1,17 @@
 import AboutHero from "@/components/about/AboutHero";
+import AboutWho from "@/components/about/AboutWho";
 import AboutIdeology from "@/components/about/AboutIdeology";
-import AboutPillars from "@/components/about/AboutPillars";
+import AboutVision from "@/components/about/AboutVision";
 import AboutPeople from "@/components/about/AboutPeople";
-import AboutExplore from "@/components/about/AboutLinks";
+import AboutStories from "@/components/about/AboutStories";
+import AboutTestimonials from "@/components/about/AboutTestimonials";
 import Pedigree from "@/components/sections/Pedigree";
 import TrialCTA from "@/components/sections/TrialCTA";
 
 export const metadata = {
-  title: "About Us",
+  title: "Our Story | About Us",
   description:
-    "CodingZen is a coding academy for kids & teens (ages 6–16) — mentor-led, project-first, building future-ready thinkers since 2016.",
+    "CodingZen is an online coding academy for kids & teens — building young tech leaders since 2016 with mentor-led, project-first learning.",
   alternates: {
     canonical: "https://codingzen.in/about",
   },
@@ -19,11 +21,13 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
+      <AboutWho />
       <AboutIdeology />
-      <AboutPillars />
-      <Pedigree />
+      <AboutVision />
       <AboutPeople />
-      <AboutExplore />
+      <AboutStories />
+      <AboutTestimonials />
+      <Pedigree />
       <TrialCTA />
     </>
   );

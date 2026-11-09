@@ -41,7 +41,6 @@ function RotatingWord() {
 
   return (
     <span className="relative inline-block align-baseline whitespace-nowrap">
-      {/* Width reserve — opacity 0 so it never paints as a ghost */}
       <span
         aria-hidden
         className="inline-block select-none"
@@ -83,12 +82,12 @@ function TrialButton({ className = "" }) {
   return (
     <a
       href="#trial"
-      className={`inline-flex items-center gap-2.5 rounded-full py-[7px] pl-5 pr-[7px] text-[13px] font-medium text-white transition hover:brightness-110 sm:text-[14px] ${className}`}
+      className={`inline-flex min-h-12 items-center gap-2.5 rounded-full py-2 pl-5 pr-2 text-[14px] font-medium text-white transition hover:brightness-110 sm:min-h-0 sm:py-[7px] sm:pr-[7px] sm:text-[14px] ${className}`}
       style={{ backgroundColor: "#1c1c1c", fontFamily: DISPLAY }}
     >
       Book a free trial class
       <span
-        className="grid h-8 w-8 place-items-center rounded-full text-white sm:h-9 sm:w-9"
+        className="grid h-9 w-9 place-items-center rounded-full text-white"
         style={{ backgroundColor: RED }}
         aria-hidden
       >
@@ -102,7 +101,7 @@ function ExploreButton({ className = "" }) {
   return (
     <a
       href="#programs"
-      className={`inline-flex items-center rounded-full border bg-white px-5 py-[13px] text-[13px] font-medium transition hover:border-[#cfc8bf] sm:text-[14px] ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center rounded-full border bg-white px-5 py-3 text-[14px] font-medium transition hover:border-[#cfc8bf] sm:min-h-0 sm:py-[13px] ${className}`}
       style={{ color: INK, fontFamily: DISPLAY, borderColor: LINE }}
     >
       Explore programs
@@ -113,17 +112,18 @@ function ExploreButton({ className = "" }) {
 export default function Hero() {
   return (
     <section
-      className="relative min-h-[100svh] overflow-x-clip"
+      className="relative overflow-x-clip"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="relative z-[1] mx-auto flex min-h-[100svh] w-full max-w-[1360px] flex-col px-5 pb-8 pt-24 sm:px-8 sm:pb-12 sm:pt-28 lg:px-12 lg:pb-20 lg:pt-32">
+      <div className="relative z-[1] mx-auto flex w-full max-w-[1360px] flex-col px-4 pb-8 pt-[5.25rem] sm:px-8 sm:pb-10 sm:pt-24 lg:px-12 lg:pb-14 lg:pt-28">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="flex min-h-0 flex-1 flex-col"
+          className="flex min-h-0 flex-col"
         >
-          <div className="inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#e4dfd8] bg-white py-[7px] pl-[7px] pr-3.5 sm:pr-4">
+          {/* Badge — wraps cleanly on narrow phones */}
+          <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-[#e4dfd8] bg-white py-[7px] pl-[7px] pr-3 sm:gap-2.5 sm:pr-4">
             <span
               className="inline-flex shrink-0 items-center rounded-full px-2.5 py-[5px] text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-white"
               style={{ backgroundColor: RED, fontFamily: MONO }}
@@ -131,15 +131,18 @@ export default function Hero() {
               Live
             </span>
             <span
-              className="truncate text-[9px] font-medium uppercase tracking-[0.14em] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px]"
+              className="min-w-0 flex-1 text-[8px] font-medium uppercase leading-snug tracking-[0.1em] xs:text-[9px] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px]"
               style={{ color: META, fontFamily: MONO }}
             >
-              Online classes · Ages 6–16 · From New Delhi
+              <span className="sm:hidden">Online · Ages 6–16 · Delhi</span>
+              <span className="hidden sm:inline">
+                Online classes · Ages 6–16 · From New Delhi
+              </span>
             </span>
           </div>
 
           <h1
-            className="mt-7 max-w-[18ch] text-[clamp(2.35rem,9.2vw,5.85rem)] leading-[1.05] tracking-[-0.04em] sm:mt-10 sm:max-w-none sm:text-[clamp(3.15rem,7.4vw,5.85rem)]"
+            className="mt-5 font-display text-[clamp(2.15rem,10vw,5.85rem)] leading-[1.08] tracking-[-0.04em] sm:mt-7 sm:text-[clamp(3.15rem,7.4vw,5.85rem)] sm:leading-[1.05]"
             style={{
               fontFamily: DISPLAY,
               fontWeight: 500,
@@ -154,31 +157,23 @@ export default function Hero() {
               <span style={{ color: INK }}>builds </span>
               <RotatingWord />
             </span>
-            <span
-              className="block sm:whitespace-nowrap"
-              style={{ color: TAUPE }}
-            >
+            <span className="block" style={{ color: TAUPE }}>
               not just uses them.
             </span>
           </h1>
 
-          <div className="mt-auto flex flex-col gap-8 pt-10 sm:gap-10 sm:pt-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <div className="mt-6 flex flex-col gap-5 sm:mt-8 sm:gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
             <p
-              className="max-w-[34rem] text-[13px] leading-[1.65] sm:text-[14px] md:text-[15px]"
+              className="max-w-[34rem] text-[14px] leading-[1.6] sm:text-[14px] md:text-[15px]"
               style={{ color: BODY, fontFamily: DISPLAY, fontWeight: 400 }}
             >
-              <span className="block">
-                Live, mentor-led classes in AI, Python, web and Scratch.
-              </span>
-              <span className="block">
-                Small screens, big ideas — and a project to show for every
-                month.
-              </span>
+              Live, mentor-led classes in AI, Python, web and Scratch. Small
+              screens, big ideas — and a project to show for every month.
             </p>
 
-            <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
               <TrialButton className="w-full justify-between sm:w-auto sm:justify-start" />
-              <ExploreButton className="w-full justify-center sm:w-auto" />
+              <ExploreButton className="w-full sm:w-auto" />
             </div>
           </div>
         </motion.div>

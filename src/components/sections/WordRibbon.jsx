@@ -22,18 +22,18 @@ const words = [
 function RibbonTrack({ ariaHidden = false }) {
   return (
     <ul
-      className="flex shrink-0 items-center gap-12 pr-12 sm:gap-16 sm:pr-16"
+      className="flex shrink-0 items-center gap-8 pr-8 sm:gap-16 sm:pr-16"
       aria-hidden={ariaHidden || undefined}
     >
       {words.map((word, i) => {
         const accent = i % 2 === 1;
         return (
-          <li key={word} className="flex shrink-0 items-center gap-12 sm:gap-16">
+          <li key={word} className="flex shrink-0 items-center gap-8 sm:gap-16">
             <span
               className={
                 accent
-                  ? "font-serif text-[clamp(1.35rem,2.6vw,2rem)] italic tracking-[-0.02em]"
-                  : "font-display text-[clamp(1.2rem,2.3vw,1.75rem)] font-medium tracking-[-0.03em]"
+                  ? "font-serif text-[clamp(1.05rem,4.5vw,2rem)] italic tracking-[-0.02em]"
+                  : "font-display text-[clamp(0.95rem,4vw,1.75rem)] font-medium tracking-[-0.03em]"
               }
               style={{ color: accent ? RED : INK }}
             >
@@ -55,19 +55,19 @@ export default function WordRibbon() {
   return (
     <section
       aria-label="CodingZen highlights"
-      className="relative w-full overflow-x-clip overflow-y-hidden py-4 sm:py-5"
+      className="relative w-full overflow-x-clip overflow-y-hidden py-2.5 sm:py-3.5"
       style={{ backgroundColor: CREAM }}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-16 sm:w-24"
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-10 sm:w-24"
         style={{
           background: `linear-gradient(to right, ${CREAM}, transparent)`,
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-16 sm:w-24"
+        className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-10 sm:w-24"
         style={{
           background: `linear-gradient(to left, ${CREAM}, transparent)`,
         }}

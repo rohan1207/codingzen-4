@@ -81,7 +81,7 @@ export default function AIFocus() {
   return (
     <section
       id="ai"
-      className="relative flex min-h-0 scroll-mt-24 items-center overflow-hidden py-12 text-ink sm:py-16 md:h-[100svh] md:max-h-[100svh] md:py-0"
+      className="relative flex min-h-0 scroll-mt-24 items-center overflow-x-clip overflow-y-hidden py-7 text-ink sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
@@ -96,7 +96,7 @@ export default function AIFocus() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        className="pointer-events-none absolute inset-0 hidden opacity-[0.35] sm:block"
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)",
@@ -106,17 +106,17 @@ export default function AIFocus() {
         }}
       />
 
-      <div className="relative z-[1] mx-auto grid h-full w-full max-w-[1320px] grid-cols-1 items-center gap-6 px-4 py-10 sm:gap-8 sm:px-8 sm:py-14 lg:grid-cols-[1.05fr_minmax(0,0.9fr)_1.05fr] lg:gap-5 lg:px-10 lg:py-24 xl:gap-8">
+      <div className="relative z-[1] mx-auto grid h-full w-full max-w-[1320px] grid-cols-1 items-center gap-6 px-4 py-0 sm:gap-7 sm:px-8 lg:grid-cols-[1.05fr_minmax(0,0.9fr)_1.05fr] lg:gap-5 lg:px-10 xl:gap-7">
         {/* Left — copy + pillars */}
         <div className="order-1 flex flex-col justify-center lg:order-none lg:pr-1 xl:pr-3">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-ember">
             CodingZen · AI tracks
           </p>
-          <h2 className="mt-3 font-display text-[clamp(1.55rem,4vw,2.85rem)] font-medium leading-[1.1] tracking-[-0.03em] normal-case text-ink">
-            <span className="block sm:whitespace-nowrap">
+          <h2 className="mt-3 font-display text-[clamp(1.5rem,7vw,2.85rem)] font-medium leading-[1.12] tracking-[-0.03em] normal-case text-ink">
+            <span className="block">
               Learn with <Em>AI</Em>
             </span>
-            <span className="block text-mute sm:whitespace-nowrap">
+            <span className="block text-mute">
               Build with <Em>AI</Em>
             </span>
           </h2>
@@ -125,11 +125,11 @@ export default function AIFocus() {
             real projects where mentors and models work side by side.
           </p>
 
-          <ul className="mt-6 flex w-full max-w-sm flex-col gap-2">
+          <ul className="mt-6 flex w-full max-w-sm flex-col gap-2.5 sm:gap-2">
             {pillars.map((p) => (
               <li
                 key={p.label}
-                className="rounded-2xl border bg-white px-4 py-2.5 text-left sm:py-3"
+                className="rounded-2xl border bg-white px-4 py-3 text-left sm:py-3"
                 style={{ borderColor: LINE }}
               >
                 <span className="block font-display text-sm font-medium tracking-[-0.02em] text-ink sm:text-[15px]">
@@ -144,7 +144,7 @@ export default function AIFocus() {
         </div>
 
         {/* Center — robot */}
-        <div className="order-2 flex h-full min-h-[240px] items-center justify-center lg:order-none">
+        <div className="order-2 flex min-h-[160px] items-center justify-center sm:min-h-[200px] lg:order-none lg:h-full">
           <div ref={robotRef} className="relative" style={{ perspective: 900 }}>
             <motion.div
               animate={{ y: [0, -10, 0] }}
@@ -163,7 +163,7 @@ export default function AIFocus() {
               >
                 <div
                   aria-hidden
-                  className="absolute h-48 w-48 rounded-full bg-ember/25 blur-3xl sm:h-64 sm:w-64"
+                  className="absolute h-40 w-40 rounded-full bg-ember/25 blur-3xl sm:h-64 sm:w-64"
                 />
                 <Image
                   src="/images/ai-robot.png"
@@ -172,7 +172,7 @@ export default function AIFocus() {
                   height={520}
                   unoptimized
                   priority
-                  className="relative z-[1] h-auto w-[min(52vw,280px)] object-contain drop-shadow-[0_28px_55px_rgba(232,68,56,0.35)] sm:w-[min(34vw,340px)] lg:w-[min(26vw,360px)]"
+                  className="relative z-[1] h-auto w-[min(68vw,240px)] max-w-full object-contain drop-shadow-[0_28px_55px_rgba(232,68,56,0.35)] sm:w-[min(34vw,340px)] lg:w-[min(26vw,360px)]"
                   draggable={false}
                 />
               </motion.div>
@@ -180,9 +180,9 @@ export default function AIFocus() {
           </div>
         </div>
 
-        {/* Right — course bento + CTA */}
-        <div className="order-3 flex flex-col justify-center lg:order-none lg:pl-1 xl:pl-3">
-          <div className="grid w-full max-w-sm grid-cols-2 gap-2.5 sm:gap-3 lg:ml-auto">
+        {/* Right — course cards + CTA */}
+        <div className="order-3 flex w-full flex-col justify-center lg:order-none lg:pl-1 xl:pl-3">
+          <div className="grid w-full max-w-sm grid-cols-1 gap-3 sm:ml-0 sm:max-w-sm sm:grid-cols-2 sm:gap-3 lg:ml-auto">
             {courses.map((c) => {
               const Icon = c.Icon;
               const featured = c.span === "col-span-2";
@@ -190,10 +190,10 @@ export default function AIFocus() {
                 <a
                   key={c.id}
                   href="#programs"
-                  className={`${c.span} group relative overflow-hidden rounded-2xl border bg-white transition hover:border-black/20 ${
+                  className={`${featured ? "sm:col-span-2" : "sm:col-span-1"} group relative overflow-hidden rounded-2xl border bg-white transition hover:border-black/20 ${
                     featured
-                      ? "flex min-h-[8.5rem] items-stretch gap-3 p-3 sm:p-3.5"
-                      : "flex min-h-[11.5rem] flex-col p-3 sm:p-3.5"
+                      ? "flex min-h-[7.5rem] flex-row items-stretch gap-3 p-3.5 sm:min-h-[8.5rem] sm:p-3.5"
+                      : "flex min-h-0 flex-col p-3.5 sm:min-h-[11.5rem]"
                   }`}
                   style={{ borderColor: LINE }}
                 >
@@ -217,7 +217,7 @@ export default function AIFocus() {
                           </span>
                         </span>
                       </span>
-                      <span className="relative h-auto w-[42%] shrink-0 overflow-hidden rounded-xl bg-[#0a0a0a]">
+                      <span className="relative h-auto w-[38%] max-w-[120px] shrink-0 overflow-hidden rounded-xl bg-[#0a0a0a] sm:w-[42%]">
                         <Image
                           src={c.thumb}
                           alt=""
@@ -230,13 +230,13 @@ export default function AIFocus() {
                     </>
                   ) : (
                     <>
-                      <span className="relative mb-2.5 aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a]">
+                      <span className="relative mb-2.5 aspect-[16/10] w-full max-w-full overflow-hidden rounded-xl bg-[#0a0a0a]">
                         <Image
                           src={c.thumb}
                           alt=""
                           fill
                           unoptimized
-                          sizes="160px"
+                          sizes="(max-width: 640px) 100vw, 160px"
                           className="object-cover object-center transition duration-400 group-hover:scale-105"
                         />
                         <span className="absolute left-2 top-2 grid h-7 w-7 place-items-center rounded-lg bg-black/45 text-ember backdrop-blur-sm">
@@ -246,10 +246,10 @@ export default function AIFocus() {
                           {c.ages}
                         </span>
                       </span>
-                      <span className="mt-auto block font-display text-[14px] font-medium tracking-[-0.03em] text-ink sm:text-[15px]">
+                      <span className="mt-auto block font-display text-[15px] font-medium tracking-[-0.03em] text-ink sm:text-[15px]">
                         {c.title}
                       </span>
-                      <span className="mt-0.5 block text-[11px] leading-snug text-mute">
+                      <span className="mt-0.5 block text-[12px] leading-snug text-mute sm:text-[11px]">
                         {c.blurb}
                       </span>
                     </>
@@ -261,7 +261,7 @@ export default function AIFocus() {
 
           <a
             href="#trial"
-            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-ember px-6 py-3 text-sm font-medium text-white transition hover:brightness-110 sm:w-fit lg:ml-auto"
+            className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-ember px-6 py-3 text-sm font-medium text-white transition hover:brightness-110 sm:w-full lg:ml-auto lg:w-fit"
           >
             Explore AI courses
           </a>

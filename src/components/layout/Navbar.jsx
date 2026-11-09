@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "@/components/layout/Logo";
@@ -10,22 +11,10 @@ import { INK, LINE, RED } from "@/lib/tokens";
 function DesktopItem({ link, activeHref, onNavigate }) {
   const hasChildren = Array.isArray(link.children) && link.children.length > 0;
   const [open, setOpen] = useState(false);
-  const closeTimer = useRef(null);
 
   const active =
     activeHref === link.href ||
     link.children?.some((c) => c.href === activeHref);
-
-  const clearClose = () => {
-    if (closeTimer.current) window.clearTimeout(closeTimer.current);
-  };
-
-  const scheduleClose = () => {
-    clearClose();
-    closeTimer.current = window.setTimeout(() => setOpen(false), 120);
-  };
-
-  useEffect(() => () => clearClose(), []);
 
   const itemClass = `relative inline-flex items-center gap-0.5 whitespace-nowrap rounded-full px-2.5 py-2 font-display text-[13px] font-medium tracking-[-0.02em] transition lg:px-3 lg:text-[14px] xl:gap-1 xl:px-4 xl:text-[15px] ${
     active || open ? "text-ink" : "text-txt hover:text-ink"
@@ -40,34 +29,52 @@ function DesktopItem({ link, activeHref, onNavigate }) {
         className={itemClass}
       >
         {link.label}
+        {active ? (
+          <span
+            aria-hidden
+            className="absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full"
+            style={{ backgroundColor: RED }}
+          />
+        ) : null}
       </a>
     );
   }
 
+  useEffect(() => {
+    if (!open) return undefined;
+    const onPointerDown = (e) => {
+      if (!e.target.closest?.(`[data-nav-menu="${link.label}"]`)) {
+        setOpen(false);
+      }
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, link.label]);
+
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => {
-        clearClose();
-        setOpen(true);
-      }}
-      onMouseLeave={scheduleClose}
-      onFocus={() => {
-        clearClose();
-        setOpen(true);
-      }}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false);
-      }}
-    >
+    <div className="relative" data-nav-menu={link.label}>
       <div className={itemClass}>
         <a
           href={link.href}
           onClick={() => onNavigate(link.href)}
           aria-current={active ? "page" : undefined}
-          className="inline-flex items-center"
+          className="relative inline-flex items-center"
         >
           {link.label}
+          {active ? (
+            <span
+              aria-hidden
+              className="absolute inset-x-0 -bottom-1.5 h-[2px] rounded-full"
+              style={{ backgroundColor: RED }}
+            />
+          ) : null}
         </a>
         <button
           type="button"
@@ -75,7 +82,11 @@ function DesktopItem({ link, activeHref, onNavigate }) {
           aria-haspopup="menu"
           aria-label={`${link.label} menu`}
           className="inline-flex items-center"
-          onClick={() => setOpen((v) => !v)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setOpen((v) => !v);
+          }}
         >
           <ChevronDown
             size={13}
@@ -89,30 +100,46 @@ function DesktopItem({ link, activeHref, onNavigate }) {
         {open && (
           <motion.div
             role="menu"
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.18 }}
-            className="absolute left-1/2 top-full z-50 mt-3 min-w-[220px] -translate-x-1/2 overflow-hidden rounded-2xl border bg-white/95 p-1.5 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-            style={{ borderColor: LINE }}
+            exit={{ opacity: 0, y: 2 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute left-0 top-full z-50 mt-2 min-w-[240px] overflow-hidden rounded-md border bg-white py-1 shadow-[0_10px_28px_-10px_rgba(0,0,0,0.2)]"
+            style={{ borderColor: "#E5DFD6" }}
           >
-            {link.children.map((child) => (
-              <a
-                key={`${link.label}-${child.label}`}
-                role="menuitem"
-                href={child.href}
-                {...(child.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                onClick={() => {
-                  if (!child.external) onNavigate(child.href);
-                  setOpen(false);
-                }}
-                className="block rounded-xl px-3.5 py-2.5 font-display text-[13px] font-medium tracking-[-0.02em] text-txt transition hover:bg-[#f3f3f3] hover:text-ink"
-              >
-                {child.label}
-              </a>
-            ))}
+            {link.children.map((child) => {
+              const childActive =
+                activeHref === child.href ||
+                (typeof child.href === "string" &&
+                  child.href !== "/" &&
+                  activeHref?.startsWith?.(child.href));
+              return (
+                <a
+                  key={`${link.label}-${child.label}`}
+                  role="menuitem"
+                  href={child.href}
+                  {...(child.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  onClick={() => {
+                    if (!child.external) onNavigate(child.href);
+                    setOpen(false);
+                  }}
+                  className={`flex items-center justify-between gap-3 border-l-2 px-3.5 py-2.5 font-display text-[13px] font-medium tracking-[-0.01em] transition ${
+                    childActive
+                      ? "border-ember bg-[#F7F4EE] text-ink"
+                      : "border-transparent text-[#5c564e] hover:border-[#D8D0C4] hover:bg-[#F7F4EE] hover:text-ink"
+                  }`}
+                >
+                  <span>{child.label}</span>
+                  <ArrowUpRight
+                    size={12}
+                    strokeWidth={2.4}
+                    className="shrink-0 opacity-35"
+                  />
+                </a>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -132,7 +159,7 @@ function MobileItem({ link, activeHref, onNavigate }) {
       <a
         href={link.href}
         onClick={() => onNavigate(link.href)}
-        className={`rounded-xl px-3 py-3 font-display text-[15px] font-medium tracking-[-0.02em] transition sm:text-base ${
+        className={`min-h-[48px] rounded-xl px-3 py-3.5 font-display text-[15px] font-medium tracking-[-0.02em] transition sm:text-base ${
           active ? "bg-ink text-white" : "text-txt hover:bg-[#f3f3f3]"
         }`}
       >
@@ -147,7 +174,7 @@ function MobileItem({ link, activeHref, onNavigate }) {
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`flex w-full items-center justify-between rounded-xl px-3 py-3 font-display text-[15px] font-medium tracking-[-0.02em] transition sm:text-base ${
+        className={`flex min-h-[48px] w-full items-center justify-between rounded-xl px-3 py-3.5 font-display text-[15px] font-medium tracking-[-0.02em] transition sm:text-base ${
           active ? "bg-ink text-white" : "text-txt hover:bg-[#f3f3f3]"
         }`}
       >
@@ -162,7 +189,7 @@ function MobileItem({ link, activeHref, onNavigate }) {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-0.5 pb-1 pl-3 pt-1">
+            <div className="mt-1 flex flex-col border-l-2 border-[#E6E0D6] py-0.5 pl-2 sm:pl-3">
               {link.children.map((child) => (
                 <a
                   key={`${link.label}-${child.label}`}
@@ -173,7 +200,7 @@ function MobileItem({ link, activeHref, onNavigate }) {
                   onClick={() => {
                     if (!child.external) onNavigate(child.href);
                   }}
-                  className="rounded-lg px-3 py-2.5 font-display text-sm font-medium text-meta transition hover:bg-[#f3f3f3] hover:text-ink sm:text-[15px]"
+                  className="min-h-[42px] px-3 py-2.5 font-display text-sm font-medium text-[#5c564e] transition hover:bg-[#F7F4EE] hover:text-ink sm:text-[15px]"
                 >
                   {child.label}
                 </a>
@@ -200,9 +227,10 @@ function TrialCta({ className = "" }) {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeHref, setActiveHref] = useState(navLinks[0]?.href ?? "/");
+  const [activeHref, setActiveHref] = useState(pathname || "/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -212,6 +240,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (pathname && pathname !== "/") {
+      setActiveHref(pathname);
+      return undefined;
+    }
+
+    setActiveHref("/");
+
     const ids = navLinks
       .flatMap((l) => [l.href, ...(l.children?.map((c) => c.href) ?? [])])
       .map((h) => {
@@ -245,7 +280,16 @@ export default function Navbar() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const navigate = (href) => {
     setActiveHref(href);
@@ -253,7 +297,9 @@ export default function Navbar() {
   };
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full max-w-[100vw] px-2.5 pt-1.5 sm:px-4 sm:pt-2 lg:px-5 lg:pt-2.5">
+    <header
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full max-w-[100vw] overflow-x-clip px-3 pt-[max(0.375rem,env(safe-area-inset-top))] sm:px-4 sm:pt-2 lg:px-5 lg:pt-2.5"
+    >
       {/* Desktop / tablet floating pill */}
       <div
         className="pointer-events-auto mx-auto hidden w-full max-w-[min(1200px,calc(100vw-2.5rem))] items-center justify-between gap-3 rounded-full border bg-white px-3 py-2.5 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.22)] transition lg:flex xl:gap-6 xl:px-5 xl:py-3"
@@ -279,17 +325,20 @@ export default function Navbar() {
 
       {/* Mobile / tablet bar */}
       <div
-        className={`pointer-events-auto mx-auto flex w-full max-w-[min(1440px,calc(100vw-1.25rem))] items-center justify-between gap-2 rounded-full border border-white/50 px-2.5 py-1.5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:gap-3 sm:px-3 sm:py-2 lg:hidden ${
-          scrolled || open ? "bg-white/80" : "bg-white/60"
+        className={`pointer-events-auto mx-auto flex w-full max-w-[min(1440px,calc(100vw-1.5rem))] items-center justify-between gap-2 rounded-full border border-white/50 px-2.5 py-1.5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:gap-3 sm:px-3 sm:py-2 lg:hidden ${
+          scrolled || open ? "bg-white/90" : "bg-white/70"
         }`}
       >
-        <Logo />
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="min-w-0 max-w-[58%] shrink overflow-hidden sm:max-w-none">
+          <Logo className="[&_img]:h-8 [&_img]:max-w-[140px] sm:[&_img]:h-10 sm:[&_img]:max-w-none" />
+        </div>
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <TrialCta className="!hidden sm:!inline-flex scale-95" />
           <button
             type="button"
-            className="grid h-9 w-9 place-items-center rounded-full border border-black/5 bg-white/80 text-ink sm:h-10 sm:w-10"
+            className="grid h-10 w-10 place-items-center rounded-full border border-black/5 bg-white/90 text-ink sm:h-10 sm:w-10"
             aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -303,7 +352,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
-            className="pointer-events-auto mx-auto mt-2 max-h-[min(78vh,560px)] w-full max-w-[min(1440px,calc(100vw-1.25rem))] overflow-y-auto rounded-[1.5rem] border bg-white/95 p-3 shadow-xl backdrop-blur-xl sm:p-4 lg:hidden"
+            className="pointer-events-auto mx-auto mt-2 max-h-[min(78dvh,560px)] w-full max-w-[min(1440px,calc(100vw-1.5rem))] overflow-y-auto overscroll-contain rounded-[1.35rem] border bg-white/98 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-xl backdrop-blur-xl sm:rounded-[1.5rem] sm:p-4 lg:hidden"
             style={{ borderColor: LINE }}
           >
             <div className="flex flex-col gap-0.5">
@@ -318,7 +367,7 @@ export default function Navbar() {
               <a
                 href="#trial"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3.5 font-display text-sm font-medium text-white sm:text-[15px]"
+                className="mt-2 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full px-4 py-3.5 font-display text-sm font-medium text-white sm:text-[15px]"
                 style={{ backgroundColor: INK }}
               >
                 <span

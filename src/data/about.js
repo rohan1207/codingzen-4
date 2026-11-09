@@ -1,27 +1,109 @@
 export const aboutStory = {
   founded: "2016",
-  eyebrow: "Who we are",
-  headline: ["CodingZen builds", "future-ready", "young minds."],
+  eyebrow: "About us",
+  title: "Our Story",
+  headline: "Building young",
+  accent: "tech leaders",
   lead:
-    "An online and offline coding academy for ages 6–16. We don’t just create coding geeks — we empower kids toward a technology-oriented world with creativity, leadership, and real projects.",
+    "CodingZen is an online coding academy established in 2016 with a passion for coding and a technology-oriented world.",
+};
+
+export const aboutWho = {
+  eyebrow: "Who we are",
+  headline: "A coding academy for curious, creative",
+  accent: "young minds.",
   body: [
-    "Founded with a passion for coding and a future-ready world, CodingZen blends technical foundations with entrepreneurial skills. AI and coding are how this generation will invent — we make sure they learn both deeply and playfully.",
-    "Our vision aligns with digital literacy and artificial intelligence: solid foundations, mentor-led practice, and pathways kids can grow into for years.",
+    "The founders of CodingZen believe that Artificial Intelligence and coding are the tools that will help this generation invent a new world.",
+    "An Online Coding Academy for kids and teens aged 6 to 18 years. We don’t just create coding geeks; we empower kids towards a technology-oriented world with creativity and leadership.",
   ],
 };
 
+export const aboutStats = [
+  {
+    label: "Since 2016",
+    icon: "calendar",
+    tint: "#F9D3CF",
+    iconBg: "#E84438",
+  },
+  {
+    label: "6 – 18 Years",
+    icon: "users",
+    tint: "#E4D9F5",
+    iconBg: "#7C5CBF",
+  },
+  {
+    label: "10,000+ Young Learners",
+    icon: "grad",
+    tint: "#D8EEDF",
+    iconBg: "#3F9B6A",
+  },
+  {
+    label: "100+ Real Projects",
+    icon: "laptop",
+    tint: "#F3E0C8",
+    iconBg: "#D97706",
+  },
+];
+
 export const aboutIdeology = [
   {
-    title: "Think and learn",
-    body: "Encourage students to reason in systems — not memorise syntax — so curiosity becomes a durable habit.",
+    title: "Encourage students to Think and Learn",
+    icon: "brain",
+    tint: "#F6D7B8",
+    iconColor: "#C2410C",
   },
   {
-    title: "Raise teenpreneurs",
-    body: "Problem framing, shipping ideas, and presenting work like young founders — more than homework.",
+    title: "Give Rise to Teenpreneurs",
+    icon: "rocket",
+    tint: "#D5EBDD",
+    iconColor: "#15803D",
   },
   {
-    title: "Create and innovate",
-    body: "Promote creativity and innovation so every project feels personal, useful, and shareable.",
+    title: "Promote Creativity and Innovation",
+    icon: "sparkles",
+    tint: "#E3D7F6",
+    iconColor: "#6D28D9",
+  },
+];
+
+export const aboutVision = {
+  title: "Our Vision",
+  body: "To nurture the next generation of coding leaders who think in systems, create with curiosity, and apply technology to problems they care about.",
+};
+
+export const aboutCurriculum = {
+  title: "Extensive-Structured Curriculum for all age groups",
+  body: "Age-banded tracks from first blocks to AI — refreshed continuously so every child grows with a clear ladder of skills and real projects.",
+};
+
+export const aboutPeople = [
+  {
+    id: "mentors",
+    label: "Professionally Trained Mentors",
+    icon: "users",
+    title: "Mentors trained in-house",
+    body: "Interviews, technical selection, then extensive in-house training so every mentor stays in sync with our mission and modules.",
+  },
+  {
+    id: "advisory",
+    label: "Our Advisory Board",
+    icon: "star",
+    title: "Industry minds behind the curriculum",
+    body: "Distinguished experts who bring know-how, networking, and a cutting-edge world-class curriculum to CodingZen.",
+  },
+  {
+    id: "ops",
+    label: "Our Operations Team",
+    icon: "layers",
+    title: "Processes that keep classes humming",
+    body: "Some of the best minds in the industry ensuring CodingZen runs on clear, reliable systems families can trust.",
+  },
+  {
+    id: "faculty",
+    label: "Our Faculty",
+    icon: "grad",
+    title: "Faculty who teach and ship",
+    body: "Educators who instruct, code, and ideate beside students — foundations first, all practical.",
   },
 ];
 
@@ -34,40 +116,4 @@ export const aboutPillars = [
     title: "Structured curriculum",
     body: "Industry-linked paths for every age band, refreshed continuously by experienced educators.",
   },
-  {
-    title: "Learning mentors",
-    body: "Mentors instruct, code, and ideate beside students — foundations first, all practical.",
-  },
-  {
-    title: "Smart support",
-    body: "Class sessions are backed by consultants who watch academic success and fitment closely.",
-  },
-];
-
-export const aboutPeople = [
-  {
-    id: "advisory",
-    label: "Advisory board",
-    title: "Industry minds behind the curriculum",
-    body: "Distinguished experts who bring know-how, networking, and a cutting-edge world-class curriculum to CodingZen.",
-  },
-  {
-    id: "ops",
-    label: "Operations",
-    title: "Processes that keep classes humming",
-    body: "Some of the best minds in the industry ensuring CodingZen runs on clear, reliable systems families can trust.",
-  },
-  {
-    id: "faculty",
-    label: "Faculty",
-    title: "Mentors trained in-house",
-    body: "Interviews, technical selection, then extensive in-house training so every mentor stays in sync with our mission and modules.",
-  },
-];
-
-export const aboutStats = [
-  { value: "2016", label: "Founded" },
-  { value: "6–16", label: "Age groups" },
-  { value: "4", label: "Learning tracks" },
-  { value: "3+", label: "Delhi NCR centers" },
 ];

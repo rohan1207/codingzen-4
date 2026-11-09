@@ -45,7 +45,7 @@ export default function FeaturesUnique() {
   return (
     <section
       id="unique"
-      className="relative flex min-h-0 scroll-mt-24 items-center overflow-hidden bg-cream py-12 sm:py-16 md:h-[100svh] md:max-h-[100svh] md:py-0"
+      className="relative flex min-h-0 scroll-mt-24 items-center overflow-x-clip bg-cream py-7 sm:py-9 lg:py-12"
     >
       <div
         aria-hidden
@@ -56,20 +56,20 @@ export default function FeaturesUnique() {
         }}
       />
 
-      <div className="relative z-[1] mx-auto flex h-full w-full max-w-[1240px] flex-col justify-center overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+      <div className="relative z-[1] mx-auto flex h-full w-full max-w-[1240px] flex-col justify-center overflow-x-clip px-4 sm:px-6 lg:px-12">
         <div className="mx-auto max-w-2xl shrink-0 text-center">
-          <h2 className="font-display text-[clamp(1.65rem,4vw,3rem)] font-medium tracking-[-0.03em] text-ink">
+          <h2 className="font-display text-[clamp(1.55rem,6.5vw,3rem)] font-medium tracking-[-0.03em] text-ink">
             What makes us <Em>unique</Em>
           </h2>
-          <p className="mt-2.5 text-[15px] leading-relaxed text-txt sm:text-base">
+          <p className="mt-2.5 text-[14px] leading-relaxed text-txt sm:text-base">
             Five clear reasons families trust CodingZen — explore each one.
           </p>
         </div>
 
-        <div className="mt-8 grid min-h-0 shrink grid-cols-1 items-stretch gap-4 lg:mt-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.28fr)] lg:gap-5">
-          {/* Left tabs — all visible, no scroll */}
+        {/* Phone: tabs above panel; lg+: side-by-side */}
+        <div className="mt-5 grid min-h-0 shrink grid-cols-1 items-stretch gap-3 sm:mt-6 lg:mt-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.28fr)] lg:gap-4">
           <ul
-            className="flex flex-col justify-center gap-2"
+            className="flex flex-col justify-center gap-1.5 sm:gap-2"
             role="tablist"
             aria-label="Unique strengths"
           >
@@ -83,7 +83,7 @@ export default function FeaturesUnique() {
                     role="tab"
                     aria-selected={on}
                     onClick={() => pick(i)}
-                    className={`flex w-full items-start gap-3 rounded-2xl px-3.5 py-2.5 text-left transition sm:gap-3.5 sm:px-4 sm:py-3 ${
+                    className={`flex min-h-[48px] w-full items-start gap-3 rounded-2xl px-3.5 py-3 text-left transition sm:min-h-0 sm:gap-3.5 sm:px-4 sm:py-3 ${
                       on
                         ? "bg-black text-white shadow-[0_12px_28px_-18px_rgba(0,0,0,0.45)]"
                         : "bg-cream text-mute hover:bg-cream-2 hover:text-ink"
@@ -96,7 +96,7 @@ export default function FeaturesUnique() {
                     >
                       <Icon size={16} strokeWidth={1.75} />
                     </span>
-                    <span className="min-w-0">
+                    <span className="min-w-0 flex-1">
                       <span
                         className={`block font-display text-[13px] font-medium tracking-[-0.02em] sm:text-[15px] ${
                           on ? "text-white" : "text-ink"
@@ -118,7 +118,6 @@ export default function FeaturesUnique() {
             })}
           </ul>
 
-          {/* Right panel — no crop */}
           <div className="relative flex min-h-0 flex-col rounded-[1.5rem] border border-line bg-cream p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8">
             {!userDriven && (
               <div className="absolute inset-x-5 top-0 h-0.5 overflow-hidden rounded-full bg-line sm:inset-x-7">
@@ -146,7 +145,7 @@ export default function FeaturesUnique() {
                   <ActiveIcon size={20} strokeWidth={1.75} />
                 </span>
 
-                <h3 className="mt-4 font-display text-[clamp(1.35rem,2.4vw,1.95rem)] font-medium leading-[1.15] tracking-[-0.035em] text-ink">
+                <h3 className="mt-4 font-display text-[clamp(1.25rem,5.5vw,1.95rem)] font-medium leading-[1.15] tracking-[-0.035em] text-ink">
                   {current.title}
                 </h3>
                 <p className="mt-2.5 text-[13px] leading-relaxed text-txt sm:text-[15px]">
@@ -162,7 +161,7 @@ export default function FeaturesUnique() {
                       <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-black text-white">
                         <Check size={12} strokeWidth={3} />
                       </span>
-                      <span className="text-[12px] leading-snug text-txt sm:text-[14px]">
+                      <span className="min-w-0 text-[12px] leading-snug text-txt sm:text-[14px]">
                         {point}
                       </span>
                     </li>

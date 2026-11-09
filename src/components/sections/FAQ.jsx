@@ -37,25 +37,23 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative scroll-mt-28 overflow-hidden py-12 sm:py-16 lg:py-24"
+      className="relative scroll-mt-28 overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
       aria-label="Frequently asked questions"
     >
       <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 xl:gap-24">
-          {/* Left — heading */}
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
           <div className="lg:pt-1">
-            <p className="lab mb-5 sm:mb-6">FAQ</p>
+            <p className="lab mb-4 sm:mb-6">FAQ</p>
 
             <h2
-              className="max-w-[14ch] font-display text-[clamp(1.75rem,5vw,3.35rem)] font-medium leading-[1.1] tracking-[-0.03em]"
+              className="max-w-[14ch] font-display text-[clamp(1.55rem,6.5vw,3.35rem)] font-medium leading-[1.1] tracking-[-0.03em]"
               style={{ color: INK }}
             >
               Questions parents <Em>actually</Em> ask.
             </h2>
           </div>
 
-          {/* Right — accordion */}
           <div className="min-w-0">
             <ul>
               {FAQS.map((item, i) => {
@@ -69,16 +67,16 @@ export default function FAQ() {
                       type="button"
                       aria-expanded={isOpen}
                       onClick={() => setOpen(isOpen ? -1 : i)}
-                      className="flex w-full items-start justify-between gap-5 py-5 text-left sm:py-6"
+                      className="flex min-h-[52px] w-full items-start justify-between gap-4 py-4 text-left sm:min-h-0 sm:gap-5 sm:py-6"
                     >
                       <span
-                        className="min-w-0 flex-1 font-display text-[1.05rem] font-medium tracking-[-0.03em] sm:text-[1.2rem]"
+                        className="min-w-0 flex-1 font-display text-[1rem] font-medium leading-snug tracking-[-0.03em] sm:text-[1.2rem]"
                         style={{ color: INK }}
                       >
                         {item.q}
                       </span>
                       <span
-                        className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full transition ${
+                        className={`mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full transition sm:h-8 sm:w-8 ${
                           isOpen
                             ? "text-white"
                             : "bg-transparent text-[#bbb] ring-1 ring-[#ddd]"
@@ -105,7 +103,7 @@ export default function FAQ() {
                           className="overflow-hidden"
                         >
                           <p
-                            className="max-w-[36rem] pb-5 pr-12 text-[15px] leading-[1.65] sm:pb-6 sm:text-[16px]"
+                            className="max-w-[36rem] pb-5 pr-4 text-[14px] leading-[1.65] sm:pb-6 sm:pr-12 sm:text-[16px]"
                             style={{ color: ANSWER }}
                           >
                             {item.a}

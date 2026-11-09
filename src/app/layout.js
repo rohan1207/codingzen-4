@@ -5,7 +5,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SiteCursor from "@/components/layout/SiteCursor";
 import SiteCursorGrid from "@/components/layout/SiteCursorGrid";
-import HomeOnlyGuard from "@/components/layout/HomeOnlyGuard";
 import LoadingBanner from "@/components/layout/LoadingBanner";
 
 /* Hero frame — Outfit medium (clean, lighter weight from client screenshot) */
@@ -135,7 +134,6 @@ export default function RootLayout({ children }) {
       className={`${display.variable} ${serif.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="relative flex min-h-full w-full flex-col overflow-x-clip font-display">
-        <HomeOnlyGuard />
         <div className="flex min-h-full w-full flex-1 flex-col overflow-x-clip">
           <LoadingBanner />
           <div className="hidden md:block">

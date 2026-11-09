@@ -14,7 +14,7 @@ export default function Logo({ className = "" }) {
         width={180}
         height={52}
         priority
-        className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-10"
+        className="h-8 w-auto max-w-[140px] object-contain object-left transition-transform duration-300 group-hover:scale-[1.02] sm:h-10 sm:max-w-none"
       />
     </Link>
   );

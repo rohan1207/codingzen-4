@@ -7,12 +7,12 @@ import { parentVideos } from "@/data/site";
 import Em from "@/components/ui/Em";
 import { CREAM } from "@/lib/tokens";
 
-function VideoCard({ item, onOpen }) {
+function VideoCard({ item, onOpen, className = "" }) {
   return (
     <button
       type="button"
       onClick={() => onOpen(item)}
-      className="group w-full shrink-0 cursor-pointer rounded-[1.25rem] bg-black p-3 text-left transition hover:bg-[#222] sm:p-3.5"
+      className={`group w-full shrink-0 cursor-pointer rounded-[1.25rem] bg-black p-3 text-left transition hover:bg-[#222] sm:p-3.5 ${className}`}
     >
       <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#0c0c0c]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -41,7 +41,7 @@ function MarqueeColumn({ items, direction = "up", onOpen }) {
   const loop = [...items, ...items];
 
   return (
-    <div className="relative h-[min(78vh,620px)] overflow-hidden">
+    <div className="relative h-[min(58vh,460px)] overflow-hidden lg:h-[min(64vh,520px)]">
       <div
         className={`flex w-full flex-col gap-3 ${
           direction === "down" ? "cz-marquee-down" : "cz-marquee-up"
@@ -79,23 +79,23 @@ export default function Testimonials() {
   return (
     <section
       id="stories"
-      className="relative scroll-mt-28 overflow-hidden py-14 text-ink sm:py-16 lg:py-20"
+      className="relative scroll-mt-28 overflow-x-clip py-7 text-ink sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-12">
-        <div className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:gap-12 xl:gap-16">
-          {/* Static copy */}
+        <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[0.95fr_1.15fr] lg:gap-10 xl:gap-12">
+          {/* Copy stacks above videos on phone */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <h2 className="font-display text-[clamp(1.65rem,4.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink">
+            <h2 className="font-display text-[clamp(1.55rem,6.5vw,3.1rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink">
               Notes we never asked anyone to <Em>write</Em>
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-txt sm:text-base">
+            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-txt sm:mt-4 sm:text-base">
               We take pride in the trust parents and students place in CodingZen.
               These stories arrived from families who stayed — not just signed
               up.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-2.5">
+            <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-6">
               <div className="flex gap-0.5 text-ember">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
@@ -106,10 +106,10 @@ export default function Testimonials() {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <a
                 href="/about"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition hover:border-ember hover:text-ember sm:w-auto"
+                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition hover:border-ember hover:text-ember sm:w-auto"
               >
                 About CodingZen
                 <ArrowRight size={15} strokeWidth={2.25} />
@@ -118,7 +118,7 @@ export default function Testimonials() {
                 href="https://codingzen.in/parents-and-kids-trust-us-too/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:bg-ink sm:w-auto"
+                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:bg-ink sm:w-auto"
               >
                 Read every review
                 <ArrowRight size={15} strokeWidth={2.25} />
@@ -126,10 +126,26 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Dual marquee strips — no overlays */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-            <MarqueeColumn items={leftCol} direction="down" onOpen={setActive} />
-            <MarqueeColumn items={rightCol} direction="up" onOpen={setActive} />
+          {/* Phone: horizontal snap of a few stories; sm+: dual marquee */}
+          <div className="min-w-0">
+            <div
+              className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:hidden [&::-webkit-scrollbar]:hidden"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
+              {parentVideos.slice(0, 4).map((item) => (
+                <VideoCard
+                  key={item.youtubeId}
+                  item={item}
+                  onOpen={setActive}
+                  className="w-[min(78vw,280px)] snap-start"
+                />
+              ))}
+            </div>
+
+            <div className="hidden grid-cols-1 gap-3 sm:grid sm:grid-cols-2 sm:gap-4">
+              <MarqueeColumn items={leftCol} direction="down" onOpen={setActive} />
+              <MarqueeColumn items={rightCol} direction="up" onOpen={setActive} />
+            </div>
           </div>
         </div>
       </div>
@@ -137,7 +153,7 @@ export default function Testimonials() {
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[80] flex items-end justify-center p-4 sm:items-center sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -169,7 +185,7 @@ export default function Testimonials() {
                   type="button"
                   onClick={() => setActive(null)}
                   aria-label="Close popup"
-                  className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white transition hover:bg-ember"
+                  className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-ember sm:h-9 sm:w-9"
                 >
                   <X size={18} strokeWidth={2.25} />
                 </button>

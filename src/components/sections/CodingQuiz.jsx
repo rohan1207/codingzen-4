@@ -255,7 +255,7 @@ function CelebrationSplash({ points }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -12, scale: 0.96 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/90 px-7 py-8 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+          className="relative w-full max-w-[min(320px,calc(100vw-2rem))] overflow-hidden rounded-[1.5rem] border border-white/70 bg-white/90 px-5 py-7 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:rounded-[1.75rem] sm:px-7 sm:py-8"
         >
           <div
             aria-hidden
@@ -369,35 +369,35 @@ export default function CodingQuiz() {
   }
 
   return (
-    <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-[#e8e8e8] bg-white shadow-[0_36px_90px_-48px_rgba(0,0,0,0.4)] sm:rounded-[1.75rem]">
+    <div className="relative flex min-h-0 w-full flex-col overflow-hidden rounded-[1.35rem] border border-[#e8e8e8] bg-white shadow-[0_36px_90px_-48px_rgba(0,0,0,0.4)] sm:rounded-[1.75rem] md:h-full">
       <AnimatePresence>
         {celebrate && <CelebrationSplash points={gained} />}
       </AnimatePresence>
 
       {/* Header */}
-      <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-[#eee] bg-[#fafafa] px-4 py-2.5 sm:px-5 sm:py-3">
+      <div className="flex shrink-0 flex-col gap-3 border-b border-[#eee] bg-[#fafafa] px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-2 sm:px-5">
         <div className="min-w-0">
           <p className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-ember">
             Mini coding quiz
           </p>
-          <p className="truncate text-[13px] text-[#555] sm:text-[14px]">
+          <p className="mt-0.5 text-[13px] leading-snug text-[#555] sm:truncate sm:text-[14px]">
             Pick an answer — learn something every try.
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ececec] bg-white px-2.5 py-1 font-display text-[12px] font-medium text-[#333]">
+          <span className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[#ececec] bg-white px-2.5 py-1 font-display text-[12px] font-medium text-[#333]">
             <Sparkles size={13} className="text-ember" />
             {points} pts
           </span>
-          <span className="rounded-full bg-black px-2.5 py-1 font-display text-[12px] font-medium text-white">
+          <span className="inline-flex min-h-[32px] items-center rounded-full bg-black px-2.5 py-1 font-display text-[12px] font-medium text-white">
             {index + 1} / {QUESTIONS.length}
           </span>
         </div>
       </div>
 
-      <div className="grid min-h-0 flex-1 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[1.15fr_0.85fr]">
         {/* Question + options */}
-        <div className="relative flex min-h-0 flex-col overflow-y-auto border-b border-[#eee] p-4 sm:p-5 lg:border-b-0 lg:border-r">
+        <div className="relative flex min-h-0 flex-col border-b border-[#eee] p-4 sm:p-5 lg:border-b-0 lg:border-r lg:overflow-y-auto">
           <AnimatePresence>
             {flash === "ok" && (
               <motion.div
@@ -412,11 +412,11 @@ export default function CodingQuiz() {
           <p className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-[#999]">
             {q.topic}
           </p>
-          <h3 className="mt-1.5 font-display text-[clamp(1.1rem,2vw,1.45rem)] font-medium tracking-[-0.03em] text-ink">
+          <h3 className="mt-1.5 font-display text-[clamp(1.15rem,5.5vw,1.45rem)] font-medium leading-snug tracking-[-0.03em] text-ink">
             {q.prompt}
           </h3>
 
-          <ul className="mt-3 flex flex-1 flex-col justify-center gap-2 sm:mt-4 sm:gap-2.5">
+          <ul className="mt-4 flex flex-col gap-2.5 sm:flex-1 sm:justify-center">
             {q.options.map((opt) => {
               const picked = selected === opt.id;
               const showCorrect = revealed && opt.id === q.correctId;
@@ -428,7 +428,7 @@ export default function CodingQuiz() {
                     type="button"
                     disabled={revealed}
                     onClick={() => pick(opt.id)}
-                    className={`flex w-full items-center gap-3 rounded-xl border px-3.5 py-2.5 text-left font-display text-[13px] font-medium tracking-[-0.02em] transition sm:rounded-2xl sm:px-4 sm:py-3 sm:text-[14px] ${
+                    className={`flex min-h-[44px] w-full items-center gap-3 rounded-xl border px-3.5 py-3 text-left font-display text-[13px] font-medium tracking-[-0.02em] transition sm:rounded-2xl sm:px-4 sm:text-[14px] ${
                       showCorrect
                         ? "border-emerald-400 bg-emerald-50 text-emerald-900"
                         : showWrong
@@ -439,7 +439,7 @@ export default function CodingQuiz() {
                     } ${revealed ? "cursor-default" : "cursor-pointer"}`}
                   >
                     <span
-                      className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-medium sm:h-8 sm:w-8 sm:text-[12px] ${
+                      className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[11px] font-medium sm:text-[12px] ${
                         showCorrect
                           ? "bg-emerald-500 text-white"
                           : showWrong
@@ -457,7 +457,7 @@ export default function CodingQuiz() {
                         opt.id.toUpperCase()
                       )}
                     </span>
-                    {opt.label}
+                    <span className="min-w-0 flex-1 break-words">{opt.label}</span>
                   </button>
                 </li>
               );
@@ -466,7 +466,7 @@ export default function CodingQuiz() {
         </div>
 
         {/* Feedback panel */}
-        <div className="flex min-h-0 flex-col justify-between gap-4 overflow-y-auto bg-[#0f0f0f] p-4 text-white sm:gap-5 sm:p-5">
+        <div className="flex min-h-0 flex-col justify-between gap-4 bg-[#0f0f0f] p-4 text-white sm:gap-5 sm:p-5 lg:overflow-y-auto">
           <div className="min-h-0">
             <p className="font-display text-[11px] font-medium uppercase tracking-[0.18em] text-white/40">
               Feedback
@@ -520,17 +520,17 @@ export default function CodingQuiz() {
                   className="mt-3"
                 >
                   <div
-                    className="inline-flex items-center gap-2 rounded-full px-3 py-1.5"
+                    className="inline-flex max-w-full items-center gap-2 rounded-full px-3 py-1.5"
                     style={{ backgroundColor: "rgba(232,68,56,0.18)", color: "#f5a8a0" }}
                   >
-                    <span className="font-display text-[12px] font-medium uppercase tracking-[0.14em]">
+                    <span className="font-display text-[11px] font-medium uppercase tracking-[0.12em] sm:text-[12px] sm:tracking-[0.14em]">
                       Almost — here&apos;s the idea
                     </span>
                   </div>
                   <p className="mt-2.5 font-display text-lg font-medium tracking-[-0.03em] text-white sm:text-xl">
                     Correct answer
                   </p>
-                  <p className="mt-1 text-[14px] font-medium text-white/90 sm:text-[15px]">
+                  <p className="mt-1 text-[14px] font-medium leading-snug text-white/90 sm:text-[15px]">
                     {
                       q.options.find((o) => o.id === q.correctId)?.label
                     }
@@ -547,7 +547,7 @@ export default function CodingQuiz() {
             type="button"
             onClick={next}
             disabled={!revealed}
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl px-4 py-3 font-display text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex min-h-[48px] w-full shrink-0 items-center justify-center gap-2 rounded-2xl px-4 py-3 font-display text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-40"
             style={{ backgroundColor: RED }}
           >
             {done ? "Play again" : "Next question"}

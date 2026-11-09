@@ -40,31 +40,31 @@ function ProgramCard({ program, className = "" }) {
       href="#trial"
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 380, damping: 28 }}
-      className={`group relative flex h-full min-h-[320px] flex-col overflow-hidden rounded-[1.75rem] bg-gradient-to-b p-5 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.28)] sm:min-h-[340px] sm:p-6 ${program.tint} ${className}`}
+      className={`group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-[1.5rem] bg-gradient-to-b p-4 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.28)] sm:min-h-[300px] sm:rounded-[1.75rem] sm:p-6 ${program.tint} ${className}`}
     >
       <span className="inline-flex w-fit rounded-full bg-white/80 px-3 py-1 font-display text-[11px] font-medium tracking-[-0.02em] text-[#555] shadow-sm backdrop-blur-sm">
         {program.ages}
       </span>
 
-      <div className="relative mx-auto mt-5 flex h-[148px] w-full items-center justify-center sm:h-[168px]">
+      <div className="relative mx-auto mt-4 flex h-[132px] w-full max-w-full items-center justify-center sm:mt-5 sm:h-[168px]">
         <Image
           src={program.art}
           alt=""
           width={280}
           height={280}
           unoptimized
-          className="h-full w-auto max-w-[200px] object-contain object-center transition duration-500 group-hover:scale-105 sm:max-w-[220px]"
+          className="h-full w-auto max-w-full object-contain object-center transition duration-500 group-hover:scale-105 sm:max-w-[220px]"
         />
       </div>
 
-      <div className="mt-5 flex flex-1 flex-col">
-        <h3 className="font-display text-[1.35rem] font-medium tracking-[-0.035em] text-ink sm:text-[1.45rem]">
+      <div className="mt-4 flex flex-1 flex-col sm:mt-5">
+        <h3 className="font-display text-[clamp(1.2rem,5vw,1.45rem)] font-medium tracking-[-0.035em] text-ink">
           {program.name}
         </h3>
-        <p className="mt-1.5 min-h-[2.6rem] text-[13px] leading-relaxed text-mute sm:text-[14px]">
+        <p className="mt-1.5 min-h-0 text-[13px] leading-relaxed text-mute sm:min-h-[2.6rem] sm:text-[14px]">
           {program.outcome}. {program.focus}.
         </p>
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-ink transition group-hover:text-ember">
+        <span className="mt-auto inline-flex min-h-[44px] items-center gap-1.5 pt-3 text-sm font-medium text-ink transition group-hover:text-ember sm:pt-4">
           {program.cta}
           <ArrowRight
             size={15}
@@ -83,14 +83,14 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="relative scroll-mt-28 overflow-hidden py-14 sm:py-16 lg:py-20"
+      className="relative scroll-mt-28 overflow-x-clip py-7 sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
     >
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-12">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10">
+        <div className="mb-5 flex flex-col gap-3 sm:mb-7 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <h2
-              className="font-display text-[clamp(1.65rem,4vw,3rem)] font-medium tracking-[-0.03em]"
+              className="font-display text-[clamp(1.5rem,7vw,3rem)] font-medium tracking-[-0.03em]"
               style={{ color: INK }}
             >
               Most sought-after <Em>courses</Em>
@@ -105,7 +105,7 @@ export default function Programs() {
           </div>
           <a
             href="#trial"
-            className="inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-ember"
+            className="inline-flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-full border border-line bg-white px-4 text-sm font-medium transition hover:text-ember sm:w-auto sm:justify-start sm:border-0 sm:bg-transparent sm:px-0 sm:min-h-0"
             style={{ color: INK }}
           >
             Find the right fit
@@ -113,7 +113,7 @@ export default function Programs() {
           </a>
         </div>
 
-        {/* Bento: 3 on top, 1 + CTA below */}
+        {/* Bento: 1-col phone → 2-col md → 3-col lg */}
         <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           <ProgramCard program={a} />
           <ProgramCard program={b} />
@@ -124,20 +124,20 @@ export default function Programs() {
           <motion.div
             whileHover={{ y: -3 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-ember via-[#e84848] to-[#c62828] p-6 text-white shadow-[0_22px_48px_-24px_rgba(232,68,56,0.55)] sm:p-8 md:col-span-2 lg:col-span-2"
+            className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-ember via-[#e84848] to-[#c62828] p-5 text-white shadow-[0_22px_48px_-24px_rgba(232,68,56,0.55)] sm:rounded-[1.75rem] sm:p-8 md:col-span-2 lg:col-span-2"
           >
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-8 -top-10 h-40 w-40 rounded-full bg-white/15 blur-2xl"
+              className="pointer-events-none absolute -right-8 -top-10 hidden h-40 w-40 rounded-full bg-white/15 blur-2xl sm:block"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute bottom-0 left-1/3 h-32 w-48 rounded-full bg-black/10 blur-2xl"
+              className="pointer-events-none absolute bottom-0 left-1/3 hidden h-32 w-48 rounded-full bg-black/10 blur-2xl sm:block"
             />
 
-            <div className="relative z-[1] grid items-center gap-6 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4">
+            <div className="relative z-[1] grid grid-cols-1 items-center gap-6 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4">
               <div>
-                <h3 className="font-display text-[clamp(1.45rem,2.6vw,2.1rem)] font-medium leading-[1.12] tracking-[-0.035em]">
+                <h3 className="font-display text-[clamp(1.35rem,6vw,2.1rem)] font-medium leading-[1.15] tracking-[-0.035em]">
                   Want to find a perfect course for your kid?
                 </h3>
                 <p className="mt-2.5 max-w-md text-[15px] leading-relaxed text-white/80 sm:text-base">
@@ -146,14 +146,14 @@ export default function Programs() {
                 </p>
                 <a
                   href="#trial"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-black px-5 py-3.5 text-sm font-medium text-white transition hover:bg-ink sm:w-auto"
+                  className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl bg-black px-5 py-3.5 text-sm font-medium text-white transition hover:bg-ink sm:mt-6 sm:w-auto"
                 >
                   Book a free trial
                   <ArrowRight size={16} strokeWidth={2.25} />
                 </a>
               </div>
 
-              <div className="relative mx-auto flex h-[200px] w-full max-w-[260px] items-end justify-center sm:h-[230px] sm:max-w-[280px] sm:justify-self-end">
+              <div className="relative mx-auto flex h-[180px] w-full max-w-[240px] items-end justify-center sm:h-[230px] sm:max-w-[280px] sm:justify-self-end">
                 <div
                   aria-hidden
                   className="absolute inset-x-[10%] bottom-0 top-[18%] rounded-[1.5rem] bg-white/15 shadow-inner"
@@ -168,11 +168,11 @@ export default function Programs() {
                 />
                 <span
                   aria-hidden
-                  className="absolute -left-1 top-4 z-[2] h-10 w-10 rounded-full border-[3px] border-white/70 bg-transparent"
+                  className="absolute -left-1 top-4 z-[2] hidden h-10 w-10 rounded-full border-[3px] border-white/70 bg-transparent sm:block"
                 />
                 <span
                   aria-hidden
-                  className="absolute -right-2 bottom-8 z-[2] h-7 w-7 rounded-full bg-white/35"
+                  className="absolute -right-2 bottom-8 z-[2] hidden h-7 w-7 rounded-full bg-white/35 sm:block"
                 />
               </div>
             </div>
