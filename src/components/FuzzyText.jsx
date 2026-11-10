@@ -352,8 +352,21 @@ export default function FuzzyText({
 
     init();
 
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (isCancelled) return;
+        if (canvas?.cleanupFuzzyText) canvas.cleanupFuzzyText();
+        init();
+      }, 160);
+    };
+    window.addEventListener("resize", onResize);
+
     return () => {
       isCancelled = true;
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
       window.cancelAnimationFrame(animationFrameId);
       clearTimeout(glitchTimeoutId);
       clearTimeout(glitchEndTimeoutId);

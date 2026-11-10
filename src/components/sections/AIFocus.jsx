@@ -81,7 +81,7 @@ export default function AIFocus() {
   return (
     <section
       id="ai"
-      className="relative flex min-h-0 scroll-mt-24 items-center overflow-x-clip overflow-y-hidden py-7 text-ink sm:py-9 lg:py-12"
+      className="relative flex min-h-0 scroll-mt-24 items-center overflow-x-clip py-7 text-ink sm:py-9 lg:py-12"
       style={{ backgroundColor: CREAM }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
@@ -182,7 +182,7 @@ export default function AIFocus() {
 
         {/* Right — course cards + CTA */}
         <div className="order-3 flex w-full flex-col justify-center lg:order-none lg:pl-1 xl:pl-3">
-          <div className="grid w-full max-w-sm grid-cols-1 gap-3 sm:ml-0 sm:max-w-sm sm:grid-cols-2 sm:gap-3 lg:ml-auto">
+          <div className="grid w-full max-w-full grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 sm:gap-3 lg:ml-auto lg:max-w-sm">
             {courses.map((c) => {
               const Icon = c.Icon;
               const featured = c.span === "col-span-2";
@@ -192,13 +192,23 @@ export default function AIFocus() {
                   href="#programs"
                   className={`${featured ? "sm:col-span-2" : "sm:col-span-1"} group relative overflow-hidden rounded-2xl border bg-white transition hover:border-black/20 ${
                     featured
-                      ? "flex min-h-[7.5rem] flex-row items-stretch gap-3 p-3.5 sm:min-h-[8.5rem] sm:p-3.5"
+                      ? "flex min-h-0 flex-col gap-3 p-3.5 sm:min-h-[8.5rem] sm:flex-row sm:items-stretch"
                       : "flex min-h-0 flex-col p-3.5 sm:min-h-[11.5rem]"
                   }`}
                   style={{ borderColor: LINE }}
                 >
                   {featured ? (
                     <>
+                      <span className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-xl bg-[#0a0a0a] sm:aspect-auto sm:h-auto sm:w-[42%] sm:max-w-[140px]">
+                        <Image
+                          src={c.thumb}
+                          alt=""
+                          fill
+                          unoptimized
+                          sizes="(max-width: 640px) 100vw, 140px"
+                          className="object-cover object-center transition duration-400 group-hover:scale-105"
+                        />
+                      </span>
                       <span className="flex min-w-0 flex-1 flex-col justify-between py-0.5">
                         <span className="flex items-start justify-between gap-2">
                           <span className="grid h-8 w-8 place-items-center rounded-xl bg-cream text-ember">
@@ -216,16 +226,6 @@ export default function AIFocus() {
                             {c.blurb}
                           </span>
                         </span>
-                      </span>
-                      <span className="relative h-auto w-[38%] max-w-[120px] shrink-0 overflow-hidden rounded-xl bg-[#0a0a0a] sm:w-[42%]">
-                        <Image
-                          src={c.thumb}
-                          alt=""
-                          fill
-                          unoptimized
-                          sizes="140px"
-                          className="object-cover object-center transition duration-400 group-hover:scale-105"
-                        />
                       </span>
                     </>
                   ) : (

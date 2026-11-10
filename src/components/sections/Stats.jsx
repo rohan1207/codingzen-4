@@ -55,7 +55,7 @@ export default function Stats() {
                     delay: 0.08 + i * 0.12,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="font-display text-[clamp(2.5rem,12vw,4.25rem)] font-medium leading-none tracking-[-0.04em] text-ink"
+                  className="font-display text-[clamp(2.15rem,11vw,4.25rem)] font-medium leading-none tracking-[-0.04em] text-ink"
                 >
                   {inView ? (
                     <CountUp

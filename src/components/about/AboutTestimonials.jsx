@@ -135,10 +135,10 @@ export default function AboutTestimonials() {
   return (
     <section
       id="parent-testimonials"
-      className="relative scroll-mt-28 overflow-x-clip py-8 sm:py-10 lg:py-12"
+      className="relative scroll-mt-28 overflow-x-clip py-6 sm:py-7 lg:py-8"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8">
         {/* Hero */}
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           <motion.div
@@ -173,41 +173,53 @@ export default function AboutTestimonials() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55 }}
-            className="relative mx-auto aspect-[5/4] w-full max-w-[460px] lg:max-w-none"
+            className="relative mx-auto aspect-[5/4] w-full max-w-[520px] lg:max-w-none"
           >
-            <div
-              aria-hidden
-              className="absolute left-[6%] top-[4%] h-[90%] w-[88%] rounded-[48%_52%_45%_55%/52%_42%_58%_48%] bg-[#E6D4F2]"
-            />
-            <div className="absolute inset-x-[8%] bottom-0 top-[6%] overflow-hidden">
+            <div className="absolute inset-0">
               <Image
-                src="/images/testimonials/mom-son.jpg"
+                src="/images/testimonials/hero-family.png"
                 alt="Parent and child learning together at CodingZen"
                 fill
                 unoptimized
-                className="object-contain object-bottom"
-                sizes="(max-width: 1024px) 90vw, 480px"
+                priority
+                className="object-contain object-center"
+                sizes="(max-width: 1024px) 90vw, 520px"
               />
             </div>
 
-            <span
-              aria-hidden
-              className="absolute left-[12%] top-[8%] z-[2] flex gap-1"
-            >
-              <span className="h-4 w-[2px] rotate-[-16deg] rounded-full bg-ember" />
-              <span className="h-3 w-[2px] rotate-[4deg] rounded-full bg-ember" />
-              <span className="h-5 w-[2px] rotate-[16deg] rounded-full bg-ember" />
-            </span>
-
             <motion.div
-              animate={float(0.2)}
-              className="absolute -right-1 top-[36%] z-[3] inline-flex items-center gap-2 rounded-full border border-white/80 bg-white px-3 py-2 shadow-[0_12px_28px_-14px_rgba(0,0,0,0.35)] sm:right-0"
+              animate={float(0)}
+              className="pointer-events-none absolute left-0 top-[40%] z-[3] inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white px-3 py-1.5 shadow-[0_12px_28px_-14px_rgba(0,0,0,0.35)] sm:left-1"
             >
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-[#EDE4FB] text-[#7C5CBF]">
-                <Users size={13} strokeWidth={2.4} />
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-[#EDE4FB] text-[#7C5CBF]">
+                <Users size={12} strokeWidth={2.4} />
               </span>
               <span className="font-display text-[12px] font-medium tracking-[-0.02em] text-ink">
-                10,000+ Happy Families
+                Happy Families
+              </span>
+            </motion.div>
+
+            <motion.div
+              animate={float(0.45)}
+              className="pointer-events-none absolute right-0 top-[12%] z-[3] inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white px-3 py-1.5 shadow-[0_12px_28px_-14px_rgba(0,0,0,0.35)] sm:right-2"
+            >
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-[#FCE4EC] text-[#E84438]">
+                <Star size={12} strokeWidth={2.4} />
+              </span>
+              <span className="font-display text-[12px] font-medium tracking-[-0.02em] text-ink">
+                Parent Loved
+              </span>
+            </motion.div>
+
+            <motion.div
+              animate={float(0.9)}
+              className="pointer-events-none absolute bottom-[12%] right-1 z-[3] inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white px-3 py-1.5 shadow-[0_12px_28px_-14px_rgba(0,0,0,0.35)] sm:right-0"
+            >
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-[#FFF0C8] text-[#D4A017]">
+                <TrendingUp size={12} strokeWidth={2.4} />
+              </span>
+              <span className="font-display text-[12px] font-medium tracking-[-0.02em] text-ink">
+                Real Progress
               </span>
             </motion.div>
           </motion.div>
@@ -296,18 +308,14 @@ export default function AboutTestimonials() {
           }}
         >
           <div className="relative grid grid-cols-1 items-center gap-6 px-5 py-7 sm:gap-8 sm:px-8 sm:py-9 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-            <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-[320px]">
-              <div
-                aria-hidden
-                className="absolute inset-[4%] rounded-[46%_54%_50%_50%/52%_44%_56%_48%] bg-[#C9B6F0]/55"
-              />
+            <div className="relative mx-auto aspect-[5/4] w-full max-w-[340px] sm:max-w-[380px]">
               <Image
-                src="/images/testimonials/girl-headphones.jpg"
+                src="/images/testimonials/code-together.png"
                 alt="Student coding with headphones"
                 fill
                 unoptimized
-                className="object-contain object-bottom drop-shadow-[0_18px_30px_rgba(0,0,0,0.18)]"
-                sizes="320px"
+                className="object-contain object-center"
+                sizes="380px"
               />
             </div>
 

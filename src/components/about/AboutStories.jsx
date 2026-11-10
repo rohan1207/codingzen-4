@@ -74,10 +74,10 @@ export default function AboutStories() {
   return (
     <section
       id="student-stories"
-      className="relative scroll-mt-28 overflow-x-clip py-8 sm:py-10 lg:py-12"
+      className="relative scroll-mt-28 overflow-x-clip py-6 sm:py-7 lg:py-8"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8">
         {/* Hero */}
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           <motion.div
@@ -127,7 +127,7 @@ export default function AboutStories() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55 }}
-            className="relative mx-auto aspect-square w-full max-w-[420px] lg:max-w-[460px]"
+            className="relative mx-auto aspect-square w-full max-w-[460px] lg:max-w-[520px]"
           >
             <div
               aria-hidden
@@ -189,7 +189,7 @@ export default function AboutStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.5 }}
-          className="relative mt-10 scroll-mt-28 overflow-hidden rounded-[1.5rem] border bg-white sm:mt-12 sm:rounded-[1.85rem]"
+          className="relative mt-7 scroll-mt-28 overflow-hidden rounded-[1.5rem] border bg-white sm:mt-8 sm:rounded-[1.85rem]"
           style={{ borderColor: LINE }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr]">
@@ -318,7 +318,7 @@ export default function AboutStories() {
         {/* Projects */}
         <div
           id="student-projects"
-          className="mt-10 scroll-mt-28 grid grid-cols-1 items-start gap-6 sm:mt-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-8"
+          className="mt-7 scroll-mt-28 grid grid-cols-1 items-start gap-5 sm:mt-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-7"
         >
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -395,7 +395,7 @@ export default function AboutStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="relative mt-10 overflow-hidden rounded-[1.5rem] bg-[#E6D9F7] px-5 py-6 sm:mt-12 sm:rounded-[1.75rem] sm:px-8 sm:py-7 lg:px-10"
+          className="relative mt-7 overflow-hidden rounded-[1.5rem] bg-[#E6D9F7] px-5 py-6 sm:mt-8 sm:rounded-[1.75rem] sm:px-8 sm:py-7 lg:px-10"
         >
           <div
             aria-hidden

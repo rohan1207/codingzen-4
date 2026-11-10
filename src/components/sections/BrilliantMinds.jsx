@@ -16,15 +16,15 @@ export default function BrilliantMinds() {
       <div className="relative z-[1] flex w-full max-w-full items-center justify-center overflow-x-clip px-4 sm:px-6 lg:px-12">
         <h2 className="sr-only">Think Create Apply</h2>
         <FuzzyText
-          fontSize="clamp(1.35rem, 8vw, 8.5rem)"
+          fontSize="clamp(1.05rem, 7vw, 8.5rem)"
           fontWeight={500}
           fontFamily="var(--font-display), Outfit, system-ui, sans-serif"
           color={INK}
           baseIntensity={0.2}
           hoverIntensity={0.5}
           enableHover
-          fuzzRange={30}
-          className="max-w-full"
+          fuzzRange={24}
+          className="h-auto max-w-full w-full object-contain"
         >
           Think Create Apply
         </FuzzyText>

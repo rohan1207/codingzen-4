@@ -22,8 +22,8 @@ export const navLinks = [
     href: "/about",
     children: [
       { label: "Our Story", href: "/about" },
-      { label: "Student Portfolios / Stories", href: "/about#student-stories" },
-      { label: "Testimonials", href: "/#stories" },
+      { label: "Student Portfolios / Stories", href: "/about/stories" },
+      { label: "Testimonials", href: "/about/testimonials" },
     ],
   },
   {
@@ -49,10 +49,11 @@ export const navLinks = [
   },
   {
     label: "Events",
-    href: "#events",
+    href: "/events",
     children: [
-      { label: "Past Events", href: "#events" },
-      { label: "Past Hackathons", href: "#events" },
+      { label: "All Events", href: "/events" },
+      { label: "Past Events", href: "/events#past" },
+      { label: "Past Hackathons", href: "/hackathon" },
     ],
   },
 ];

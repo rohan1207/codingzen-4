@@ -4,7 +4,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SiteCursor from "@/components/layout/SiteCursor";
-import SiteCursorGrid from "@/components/layout/SiteCursorGrid";
+import MagneticPills from "@/components/layout/MagneticPills";
 import LoadingBanner from "@/components/layout/LoadingBanner";
 
 /* Hero frame — Outfit medium (clean, lighter weight from client screenshot) */
@@ -137,8 +137,8 @@ export default function RootLayout({ children }) {
         <div className="flex min-h-full w-full flex-1 flex-col overflow-x-clip">
           <LoadingBanner />
           <div className="hidden md:block">
-            <SiteCursorGrid />
             <SiteCursor />
+            <MagneticPills />
           </div>
           <SmoothScroll>
             <div className="relative z-[1] flex min-h-full w-full flex-1 flex-col overflow-x-clip">

@@ -40,39 +40,37 @@ function ProgramCard({ program, className = "" }) {
       href="#trial"
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 380, damping: 28 }}
-      className={`group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-[1.5rem] bg-gradient-to-b p-4 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.28)] sm:min-h-[300px] sm:rounded-[1.75rem] sm:p-6 ${program.tint} ${className}`}
+      className={`group relative flex flex-col self-start overflow-hidden rounded-[1.5rem] bg-gradient-to-b p-5 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.28)] sm:rounded-[1.75rem] sm:p-5 ${program.tint} ${className}`}
     >
       <span className="inline-flex w-fit rounded-full bg-white/80 px-3 py-1 font-display text-[11px] font-medium tracking-[-0.02em] text-[#555] shadow-sm backdrop-blur-sm">
         {program.ages}
       </span>
 
-      <div className="relative mx-auto mt-4 flex h-[132px] w-full max-w-full items-center justify-center sm:mt-5 sm:h-[168px]">
+      <div className="relative mx-auto mt-3 flex h-[112px] w-full items-center justify-center sm:mt-4 sm:h-[128px]">
         <Image
           src={program.art}
           alt=""
-          width={280}
-          height={280}
+          width={240}
+          height={240}
           unoptimized
-          className="h-full w-auto max-w-full object-contain object-center transition duration-500 group-hover:scale-105 sm:max-w-[220px]"
+          className="h-full w-auto max-w-[180px] object-contain object-center transition duration-500 group-hover:scale-105"
         />
       </div>
 
-      <div className="mt-4 flex flex-1 flex-col sm:mt-5">
-        <h3 className="font-display text-[clamp(1.2rem,5vw,1.45rem)] font-medium tracking-[-0.035em] text-ink">
-          {program.name}
-        </h3>
-        <p className="mt-1.5 min-h-0 text-[13px] leading-relaxed text-mute sm:min-h-[2.6rem] sm:text-[14px]">
-          {program.outcome}. {program.focus}.
-        </p>
-        <span className="mt-auto inline-flex min-h-[44px] items-center gap-1.5 pt-3 text-sm font-medium text-ink transition group-hover:text-ember sm:pt-4">
-          {program.cta}
-          <ArrowRight
-            size={15}
-            strokeWidth={2.25}
-            className="transition group-hover:translate-x-0.5"
-          />
-        </span>
-      </div>
+      <h3 className="mt-3 font-display text-[clamp(1.2rem,5vw,1.4rem)] font-medium tracking-[-0.035em] text-ink sm:mt-4">
+        {program.name}
+      </h3>
+      <p className="mt-1.5 text-[14px] leading-relaxed text-mute">
+        {program.outcome}. {program.focus}.
+      </p>
+      <span className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition group-hover:text-ember">
+        {program.cta}
+        <ArrowRight
+          size={15}
+          strokeWidth={2.25}
+          className="transition group-hover:translate-x-0.5"
+        />
+      </span>
     </motion.a>
   );
 }
@@ -124,7 +122,7 @@ export default function Programs() {
           <motion.div
             whileHover={{ y: -3 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-ember via-[#e84848] to-[#c62828] p-5 text-white shadow-[0_22px_48px_-24px_rgba(232,68,56,0.55)] sm:rounded-[1.75rem] sm:p-8 md:col-span-2 lg:col-span-2"
+            className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-ember via-[#e84848] to-[#c62828] p-5 text-white shadow-[0_22px_48px_-24px_rgba(232,68,56,0.55)] sm:rounded-[1.75rem] sm:p-6 md:col-span-2 lg:col-span-2"
           >
             <div
               aria-hidden
@@ -135,25 +133,25 @@ export default function Programs() {
               className="pointer-events-none absolute bottom-0 left-1/3 hidden h-32 w-48 rounded-full bg-black/10 blur-2xl sm:block"
             />
 
-            <div className="relative z-[1] grid grid-cols-1 items-center gap-6 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4">
+            <div className="relative z-[1] grid grid-cols-1 items-center gap-5 sm:grid-cols-[1.15fr_0.85fr] sm:gap-4">
               <div>
-                <h3 className="font-display text-[clamp(1.35rem,6vw,2.1rem)] font-medium leading-[1.15] tracking-[-0.035em]">
+                <h3 className="font-display text-[clamp(1.35rem,5.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.035em]">
                   Want to find a perfect course for your kid?
                 </h3>
-                <p className="mt-2.5 max-w-md text-[15px] leading-relaxed text-white/80 sm:text-base">
+                <p className="mt-2.5 max-w-md text-[15px] leading-relaxed text-white/80">
                   Book a free trial — we&apos;ll match the right age band and
                   path after a quick fitment chat.
                 </p>
                 <a
                   href="#trial"
-                  className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl bg-black px-5 py-3.5 text-sm font-medium text-white transition hover:bg-ink sm:mt-6 sm:w-auto"
+                  className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl bg-black px-5 py-3.5 text-sm font-medium text-white transition hover:bg-ink sm:w-auto"
                 >
                   Book a free trial
                   <ArrowRight size={16} strokeWidth={2.25} />
                 </a>
               </div>
 
-              <div className="relative mx-auto flex h-[180px] w-full max-w-[240px] items-end justify-center sm:h-[230px] sm:max-w-[280px] sm:justify-self-end">
+              <div className="relative mx-auto flex h-[160px] w-full max-w-[220px] items-end justify-center sm:h-[190px] sm:max-w-[250px] sm:justify-self-end">
                 <div
                   aria-hidden
                   className="absolute inset-x-[10%] bottom-0 top-[18%] rounded-[1.5rem] bg-white/15 shadow-inner"

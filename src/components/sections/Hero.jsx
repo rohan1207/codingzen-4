@@ -40,10 +40,10 @@ function RotatingWord() {
   }, []);
 
   return (
-    <span className="relative inline-block align-baseline whitespace-nowrap">
+    <span className="relative inline-block max-w-full align-baseline whitespace-nowrap">
       <span
         aria-hidden
-        className="inline-block select-none"
+        className="inline-block max-w-full select-none"
         style={{
           fontFamily: SERIF,
           fontStyle: "italic",
@@ -58,7 +58,7 @@ function RotatingWord() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.em
           key={BUILD_WORDS[index]}
-          className="absolute left-0 top-0 whitespace-nowrap"
+          className="absolute left-0 top-0 max-w-full whitespace-nowrap"
           style={{
             color: RED,
             fontFamily: SERIF,
@@ -131,7 +131,7 @@ export default function Hero() {
               Live
             </span>
             <span
-              className="min-w-0 flex-1 text-[8px] font-medium uppercase leading-snug tracking-[0.1em] xs:text-[9px] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px]"
+              className="min-w-0 flex-1 text-[8px] font-medium uppercase leading-snug tracking-[0.1em] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px]"
               style={{ color: META, fontFamily: MONO }}
             >
               <span className="sm:hidden">Online · Ages 6–16 · Delhi</span>
@@ -142,7 +142,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="mt-5 font-display text-[clamp(2.15rem,10vw,5.85rem)] leading-[1.08] tracking-[-0.04em] sm:mt-7 sm:text-[clamp(3.15rem,7.4vw,5.85rem)] sm:leading-[1.05]"
+            className="mt-5 font-display text-[clamp(1.85rem,9vw,5.85rem)] leading-[1.08] tracking-[-0.04em] sm:mt-7 sm:text-[clamp(3.15rem,7.4vw,5.85rem)] sm:leading-[1.05]"
             style={{
               fontFamily: DISPLAY,
               fontWeight: 500,

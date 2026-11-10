@@ -23,11 +23,11 @@ const icons = {
 export default function AboutWho() {
   return (
     <section
-      className="relative overflow-x-clip py-8 sm:py-10 lg:py-12"
+      className="relative overflow-x-clip py-6 sm:py-7 lg:py-8"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 items-center gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+      <div className="mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
           {/* Media */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}

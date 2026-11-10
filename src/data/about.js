@@ -68,12 +68,12 @@ export const aboutIdeology = [
 
 export const aboutVision = {
   title: "Our Vision",
-  body: "To nurture the next generation of coding leaders who think in systems, create with curiosity, and apply technology to problems they care about.",
+  body: "To nurture the next generation of coding leaders aligned with Digital Literacy and AI — young builders who think in systems, create with curiosity, and apply technology to problems they care about.",
 };
 
 export const aboutCurriculum = {
   title: "Extensive-Structured Curriculum for all age groups",
-  body: "Age-banded tracks from first blocks to AI — refreshed continuously so every child grows with a clear ladder of skills and real projects.",
+  body: "Age-banded tracks from first blocks to AI — foundations first, then real projects. Continuously refreshed so every child grows with a clear ladder of skills.",
 };
 
 export const aboutPeople = [

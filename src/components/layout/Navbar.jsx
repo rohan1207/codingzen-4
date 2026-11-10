@@ -302,7 +302,7 @@ export default function Navbar() {
     >
       {/* Desktop / tablet floating pill */}
       <div
-        className="pointer-events-auto mx-auto hidden w-full max-w-[min(1200px,calc(100vw-2.5rem))] items-center justify-between gap-3 rounded-full border bg-white px-3 py-2.5 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.22)] transition lg:flex xl:gap-6 xl:px-5 xl:py-3"
+        className="pointer-events-auto mx-auto hidden w-full max-w-[min(1200px,calc(100vw-2.5rem))] items-center justify-between gap-2 rounded-full border bg-white px-2.5 py-2 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.22)] transition xl:flex xl:gap-6 xl:px-5 xl:py-3"
         style={{ borderColor: LINE }}
       >
         <div className="shrink-0 pl-0.5 xl:pl-1">
@@ -325,7 +325,7 @@ export default function Navbar() {
 
       {/* Mobile / tablet bar */}
       <div
-        className={`pointer-events-auto mx-auto flex w-full max-w-[min(1440px,calc(100vw-1.5rem))] items-center justify-between gap-2 rounded-full border border-white/50 px-2.5 py-1.5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:gap-3 sm:px-3 sm:py-2 lg:hidden ${
+        className={`pointer-events-auto mx-auto flex w-full max-w-[min(1440px,calc(100vw-1.5rem))] items-center justify-between gap-2 rounded-full border border-white/50 px-2.5 py-1.5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:gap-3 sm:px-3 sm:py-2 xl:hidden ${
           scrolled || open ? "bg-white/90" : "bg-white/70"
         }`}
       >
@@ -352,7 +352,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
-            className="pointer-events-auto mx-auto mt-2 max-h-[min(78dvh,560px)] w-full max-w-[min(1440px,calc(100vw-1.5rem))] overflow-y-auto overscroll-contain rounded-[1.35rem] border bg-white/98 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-xl backdrop-blur-xl sm:rounded-[1.5rem] sm:p-4 lg:hidden"
+            className="pointer-events-auto mx-auto mt-2 max-h-[min(78dvh,560px)] w-full max-w-[min(1440px,calc(100vw-1.5rem))] overflow-y-auto overscroll-contain rounded-[1.35rem] border bg-white/98 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-xl backdrop-blur-xl sm:rounded-[1.5rem] sm:p-4 xl:hidden"
             style={{ borderColor: LINE }}
           >
             <div className="flex flex-col gap-0.5">

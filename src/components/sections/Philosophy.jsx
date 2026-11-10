@@ -29,7 +29,10 @@ export default function Philosophy() {
             transition={{ duration: 0.6, ease: EASE }}
           >
             <span className="block">
-              We don&apos;t teach kids to memorise syntax.
+              We don&apos;t teach kids to{" "}
+              <span className="max-sm:whitespace-normal whitespace-nowrap">
+                memorise syntax.
+              </span>
             </span>
             <span className="block">
               We teach them to <Em>think</Em> in systems,

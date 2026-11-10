@@ -56,15 +56,20 @@ export default function Pedigree() {
         Brought to you by a <Em>team from</Em>
       </h2>
 
-      <ul className="mx-auto mt-6 grid max-w-[1180px] grid-cols-2 items-center justify-items-center gap-x-6 gap-y-6 sm:mt-8 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-8 lg:mt-9 lg:grid-cols-5 lg:gap-x-14 lg:gap-y-0">
-        {pedigree.map((item) => (
-          <li key={item.name} className="flex w-full items-center justify-center">
+      <ul className="mx-auto mt-6 grid max-w-[1180px] grid-cols-2 items-center justify-items-center gap-x-4 gap-y-5 sm:mt-8 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-8 lg:mt-9 lg:grid-cols-5 lg:gap-x-14 lg:gap-y-0">
+        {pedigree.map((item, i) => (
+          <li
+            key={item.name}
+            className={`flex w-full items-center justify-center ${
+              i === pedigree.length - 1 ? "col-span-2 sm:col-span-1" : ""
+            }`}
+          >
             <a
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
               title={item.name}
-              className="flex h-16 w-full max-w-[160px] items-center justify-center transition hover:opacity-75 sm:h-28 sm:max-w-[220px] lg:h-[7.25rem] lg:max-w-[200px]"
+              className="flex h-14 w-full max-w-[140px] items-center justify-center transition hover:opacity-75 sm:h-28 sm:max-w-[220px] lg:h-[7.25rem] lg:max-w-[200px]"
             >
               <Image
                 src={item.src}
@@ -72,7 +77,7 @@ export default function Pedigree() {
                 width={item.w}
                 height={item.h}
                 unoptimized
-                className="h-full w-auto max-h-16 max-w-full object-contain object-center sm:max-h-[7.25rem]"
+                className="h-full w-auto max-h-14 max-w-full object-contain object-center sm:max-h-[7.25rem]"
               />
             </a>
           </li>

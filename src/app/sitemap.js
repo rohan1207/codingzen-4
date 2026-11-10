@@ -13,6 +13,18 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
+      url: "https://codingzen.in/about/stories",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://codingzen.in/about/testimonials",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://codingzen.in/programs",
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -44,6 +56,18 @@ export default function sitemap() {
     },
     {
       url: "https://codingzen.in/consultation",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://codingzen.in/hackathon",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://codingzen.in/events",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,

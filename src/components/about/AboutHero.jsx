@@ -32,10 +32,10 @@ export default function AboutHero() {
   return (
     <section
       id="our-story"
-      className="relative scroll-mt-28 overflow-x-clip pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12"
+      className="relative scroll-mt-28 overflow-x-clip pt-24 pb-6 sm:pt-28 sm:pb-8 lg:pt-32 lg:pb-9"
       style={{ backgroundColor: CREAM }}
     >
-      <div className="relative mx-auto grid w-full max-w-[1180px] grid-cols-1 items-center gap-8 px-4 sm:gap-10 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-12">
+      <div className="relative mx-auto grid w-full max-w-[1360px] grid-cols-1 items-center gap-6 px-4 sm:gap-8 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-8">
         {/* Copy */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -84,31 +84,21 @@ export default function AboutHero() {
           </div>
         </motion.div>
 
-        {/* Visual */}
+        {/* Single hero visual + floating pills */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="relative mx-auto aspect-[5/4] w-full max-w-[540px] lg:max-w-none"
+          className="relative mx-auto aspect-[5/4] w-full max-w-[560px] lg:max-w-none"
         >
-          {/* Purple organic blob */}
-          <div
-            aria-hidden
-            className="absolute left-[6%] top-[4%] h-[88%] w-[88%] rounded-[42%_58%_48%_52%/48%_42%_58%_52%] bg-[#D8C8F0]"
-          />
-          <div
-            aria-hidden
-            className="absolute left-[14%] top-[10%] h-[78%] w-[74%] rounded-[48%_52%_55%_45%/45%_55%_45%_55%] bg-[#E6D9F7]/70"
-          />
-
-          <div className="absolute inset-x-[8%] bottom-0 top-[8%] overflow-hidden">
+          <div className="absolute inset-0">
             <Image
-              src="/images/about/hero-teens.jpg"
+              src="/images/about/hero-duo.png"
               alt="CodingZen students learning together on a laptop"
               fill
               unoptimized
               priority
-              className="object-contain object-bottom"
+              className="object-contain object-center"
               sizes="(max-width: 1024px) 90vw, 520px"
             />
           </div>

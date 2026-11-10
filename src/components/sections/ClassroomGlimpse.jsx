@@ -21,7 +21,7 @@ export default function ClassroomGlimpse() {
         className="pointer-events-none absolute bottom-20 right-10 hidden h-24 w-24 -rotate-6 rounded-2xl border border-line sm:block"
       />
 
-      <div className="container-zen section-pad relative grid grid-cols-1 items-center gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-5 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8 lg:px-12">
         <div className="min-w-0">
           <p className="lab">
             Inside the dojo

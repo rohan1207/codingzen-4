@@ -99,7 +99,7 @@ export default function StudentProcess() {
           </div>
 
           {/* Desktop timeline */}
-          <div className="relative hidden md:block">
+          <div className="relative hidden lg:block">
             <div
               className="absolute left-0 right-0 top-[1.15rem] h-px"
               style={{ backgroundColor: LINE }}
@@ -143,8 +143,8 @@ export default function StudentProcess() {
             </ol>
           </div>
 
-          {/* Mobile stacked timeline */}
-          <ol className="relative space-y-0 md:hidden">
+          {/* Mobile / tablet stacked timeline */}
+          <ol className="relative space-y-0 lg:hidden">
             <div
               aria-hidden
               className="absolute bottom-2 left-[11px] top-2 w-px"

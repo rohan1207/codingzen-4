@@ -170,7 +170,7 @@ export default function StackGallery() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 sm:hidden">
+        <div className="flex flex-col gap-4 lg:hidden">
           {tracks.map((track) => (
             <MobileCard key={track.id} track={track} />
           ))}
@@ -178,7 +178,7 @@ export default function StackGallery() {
 
         <div
           ref={rootRef}
-          className="hidden h-[440px] gap-3 sm:flex lg:h-[480px] lg:gap-3.5"
+          className="hidden h-[480px] gap-3.5 lg:flex"
           onMouseLeave={() => setActive(2)}
         >
           {tracks.map((track, i) => {

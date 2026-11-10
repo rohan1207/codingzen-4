@@ -79,7 +79,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="group flex w-[min(78vw,300px)] shrink-0 snap-start flex-col text-left outline-none transition focus-visible:ring-2 focus-visible:ring-ember/40 sm:w-[min(46vw,280px)] lg:w-[min(26vw,300px)]"
+            className="group flex w-[min(82vw,280px)] shrink-0 snap-start flex-col text-left outline-none transition focus-visible:ring-2 focus-visible:ring-ember/40 sm:w-[min(46vw,280px)] lg:w-[min(26vw,300px)]"
             aria-label={`${item.title} by ${item.student}`}
           >
             <div
@@ -184,9 +184,9 @@ export default function Portfolio() {
                       href={active.mediaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white transition hover:bg-white/15"
+                      className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1.5 text-[11px] font-medium text-white transition hover:bg-white/15 sm:px-3"
                     >
-                      Open site
+                      <span className="hidden sm:inline">Open site</span>
                       <ExternalLink size={12} />
                     </a>
                   )}
@@ -204,7 +204,7 @@ export default function Portfolio() {
               <div
                 className={`relative w-full bg-black ${
                   active.mediaType === "site"
-                    ? "h-[min(62vh,640px)] sm:h-[min(72vh,640px)]"
+                    ? "h-[min(50dvh,520px)] sm:h-[min(72vh,640px)]"
                     : "aspect-video"
                 }`}
               >

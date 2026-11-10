@@ -2,17 +2,14 @@
 
 import TargetCursor from "@/components/TargetCursor";
 
-/** Site-wide target cursor — snaps to every button, link CTA, and .cursor-target */
+/** Minimal red cursor — dot + ring, soft magnetic pull on pill CTAs. */
 export default function SiteCursor() {
   return (
     <TargetCursor
-      targetSelector="button, a[href], [role='button'], input[type='submit'], input[type='button'], .cursor-target"
-      spinDuration={2}
+      targetSelector="button.rounded-full, a.rounded-full, [role='button'].rounded-full, .magnetic-pill, .cursor-target"
       hideDefaultCursor
-      parallaxOn
-      hoverDuration={0.2}
-      cursorColor="#ffffff"
-      cursorColorOnTarget="#e84438"
+      magneticStrength={0.32}
+      cursorColor="#e84438"
     />
   );
 }

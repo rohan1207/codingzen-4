@@ -69,7 +69,7 @@ export default function FeaturesUnique() {
         {/* Phone: tabs above panel; lg+: side-by-side */}
         <div className="mt-5 grid min-h-0 shrink grid-cols-1 items-stretch gap-3 sm:mt-6 lg:mt-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.28fr)] lg:gap-4">
           <ul
-            className="flex flex-col justify-center gap-1.5 sm:gap-2"
+            className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-col lg:justify-center lg:overflow-visible lg:pb-0 lg:gap-2 [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Unique strengths"
           >
@@ -77,7 +77,7 @@ export default function FeaturesUnique() {
               const on = i === active;
               const Icon = icons[item.icon] ?? Award;
               return (
-                <li key={item.id} className="shrink-0">
+                <li key={item.id} className="w-[min(78vw,280px)] shrink-0 lg:w-full">
                   <button
                     type="button"
                     role="tab"
@@ -156,7 +156,7 @@ export default function FeaturesUnique() {
                   {current.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-center gap-3 rounded-full border border-line bg-white px-3.5 py-2.5 sm:px-4 sm:py-3"
+                      className="flex items-center gap-3 rounded-2xl border border-line bg-white px-3.5 py-2.5 sm:rounded-full sm:px-4 sm:py-3"
                     >
                       <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-black text-white">
                         <Check size={12} strokeWidth={3} />

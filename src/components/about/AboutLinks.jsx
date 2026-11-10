@@ -111,7 +111,7 @@ export default function AboutExplore() {
               </h2>
             </div>
             <a
-              href="/#portfolio"
+              href="/about/stories"
               className="inline-flex items-center gap-1.5 font-display text-[14px] font-medium text-ember transition hover:opacity-80"
             >
               Browse the gallery
@@ -128,7 +128,7 @@ export default function AboutExplore() {
               return (
                 <a
                   key={item.title}
-                  href="/#portfolio"
+                  href="/about/stories"
                   onMouseEnter={() => setHoverPort(i)}
                   className={`relative h-[200px] shrink-0 overflow-hidden rounded-[1.25rem] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-[260px] sm:rounded-[1.35rem] ${
                     wide ? "w-[min(70vw,320px)]" : "w-[min(48vw,160px)] sm:w-[140px]"
@@ -177,7 +177,7 @@ export default function AboutExplore() {
               </h2>
             </div>
             <a
-              href="/#stories"
+              href="/about/testimonials"
               className="inline-flex items-center gap-1.5 font-display text-[14px] font-medium text-ember transition hover:opacity-90"
             >
               Watch more stories
@@ -195,7 +195,7 @@ export default function AboutExplore() {
                 transition={{ delay: i * 0.08 }}
               >
                 <a
-                  href="/#stories"
+                  href="/about/testimonials"
                   className="group relative block overflow-hidden rounded-[1.25rem] bg-white/[0.06]"
                 >
                   <div className="relative aspect-[16/10]">

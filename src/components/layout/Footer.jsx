@@ -22,8 +22,8 @@ const programs = [
 const company = [
   { label: "About", href: "/about" },
   { label: "Our Story", href: "/about" },
-  { label: "Portfolios", href: "/#portfolio" },
-  { label: "Testimonials", href: "/#stories" },
+  { label: "Portfolios", href: "/about/stories" },
+  { label: "Testimonials", href: "/about/testimonials" },
 ];
 
 const help = [
@@ -145,7 +145,7 @@ function BrandGlow() {
 
       <p
         className="pointer-events-none absolute inset-x-0 bottom-[1.25rem] z-[1] text-center font-display font-medium leading-none tracking-[-0.07em] text-white select-none sm:bottom-[1.75rem] lg:bottom-[2.25rem]"
-        style={{ fontSize: "clamp(2.75rem, 16vw, 11.5rem)" }}
+        style={{ fontSize: "clamp(2.25rem, 14vw, 11.5rem)" }}
       >
         codingzen
       </p>
